@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-lsp-signature-help"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
+  },
   ["cmp-nvim-lua"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
@@ -124,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
+  ["lspkind.nvim"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
+    url = "https://github.com/onsails/lspkind.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -139,6 +149,11 @@ _G.packer_plugins = {
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
     url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
   },
+  ["netrw.nvim"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/netrw.nvim",
+    url = "https://github.com/prichrd/netrw.nvim"
+  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
@@ -148,6 +163,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/nui.nvim",
     url = "https://github.com/MunifTanjim/nui.nvim"
+  },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -164,10 +184,15 @@ _G.packer_plugins = {
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-ts-autotag"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/nvim-tree/nvim-web-devicons"
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -178,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/pear-tree",
     url = "https://github.com/tmsvg/pear-tree"
+  },
+  playground = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/playground",
+    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -198,6 +228,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jason/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-svelte-plugin"] = {
+    loaded = true,
+    path = "/home/jason/.local/share/nvim/site/pack/packer/start/vim-svelte-plugin",
+    url = "https://github.com/leafoftree/vim-svelte-plugin"
   },
   ["zen-mode.nvim"] = {
     loaded = true,
