@@ -60,3 +60,5 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
 vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true

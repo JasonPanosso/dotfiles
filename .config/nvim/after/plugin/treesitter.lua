@@ -1,5 +1,4 @@
 require("nvim-ts-autotag").setup()
-
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
