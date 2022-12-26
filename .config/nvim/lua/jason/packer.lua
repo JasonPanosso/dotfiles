@@ -85,7 +85,7 @@ require('packer').startup(function(use)
 		end,
 	})
 	use({ "theprimeagen/vim-be-good" })
-
+  use({ "christoomey/vim-tmux-navigator" })
 end)
 
 -- When we are bootstrapping a configuration, it doesn't
