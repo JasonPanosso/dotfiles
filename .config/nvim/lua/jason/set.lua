@@ -31,7 +31,6 @@ vim.cmd [[colorscheme onedark]]
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-
 -- Set custom options
 vim.opt.guicursor = ""
 
@@ -49,7 +48,6 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-
 vim.opt.colorcolumn = "80"
 
 vim.opt.clipboard = 'unnamedplus'
@@ -62,3 +60,6 @@ vim.g.netrw_winsize = 25
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
+
+-- this REMOVES command line unless you are entering a command(for lualine)
+vim.o.cmdheight = 0

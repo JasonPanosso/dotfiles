@@ -22,8 +22,6 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.keymap.set("n", "<leader>sm", ":Telescope keymaps<cr>", { desc = "Show list of current user keymaps" })
 
 -- Treesitter bindings - see after/plugins/treesitter.lua
---
---
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -66,3 +64,6 @@ vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+vim.keymap.set("n", "<leader>dv", ":DiffviewOpen<cr>", { desc = "Open Diffview" })
+vim.keymap.set("n", "<leader>fh", ":DiffviewFileHistory %<cr>", { desc = "File History" })

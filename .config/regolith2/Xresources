@@ -1,5 +1,7 @@
 regolith.look.path: /usr/share/regolith-look/dracula
-regolith.wallpaper.file: /usr/share/desktop-base/homeworld-theme/wallpaper/gnome-background.xml
-regolith.lockscreen.wallpaper.file: /usr/share/desktop-base/homeworld-theme/wallpaper/gnome-background.xml
+!regolith.wallpaper.file: /usr/share/desktop-base/homeworld-theme/wallpaper/gnome-background.xml
+!regolith.lockscreen.wallpaper.file: /usr/share/desktop-base/homeworld-theme/wallpaper/gnome-background.xml
 i3-wm.gaps.inner.size: 0
 gnome.terminal.font: FiraCode Nerd Font 11
+regolith.wallpaper.file: /home/jason/.local/share/backgrounds/2023-01-05-14-33-45-wallpaper.png
+regolith.lockscreen.wallpaper.file: /home/jason/.local/share/backgrounds/2023-01-05-14-33-45-wallpaper.png
