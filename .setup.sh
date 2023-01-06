@@ -37,7 +37,7 @@ pip3 install thefuck --user
 
 #Dotfiles
 git clone https://github.com/jasonpanosso/dotfiles.git $HOME/.dotfiles && source ~/.zshrc
-
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 #ohmyzsh
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
