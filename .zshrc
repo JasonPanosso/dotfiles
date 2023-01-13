@@ -7,6 +7,7 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias rc="regolith-control-center"
 alias firefoxdev="/opt/firefox/firefox </dev/null &>/dev/null &"
 eval $(thefuck --alias)
+[[ $TMUX != "" ]] && export TERM="screen-256color"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
