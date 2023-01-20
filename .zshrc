@@ -75,6 +75,7 @@ ZSH_THEME="headline/headline"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git rbw zsh-autosuggestions jsontools zsh-syntax-highlighting autoenv)
+source /home/jason/.environment
 source /usr/local/lib/node_modules/@hyperupcall/autoenv/activate.sh
 source $ZSH/oh-my-zsh.sh
 
