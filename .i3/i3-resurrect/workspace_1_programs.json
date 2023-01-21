@@ -1,0 +1,14 @@
+[
+  {
+    "command": [
+      "/usr/share/discord/Discord"
+    ],
+    "working_directory": "/usr/bin"
+  },
+  {
+    "command": [
+      "/snap/firefox/2263/usr/lib/firefox/firefox"
+    ],
+    "working_directory": "/home/jason"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "command": [
+      "/snap/firefox/2263/usr/lib/firefox/firefox"
+    ],
+    "working_directory": "/home/jason"
+  }
+]

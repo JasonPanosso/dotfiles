@@ -1,0 +1,8 @@
+[
+  {
+    "command": [
+      "/usr/share/spotify/spotify"
+    ],
+    "working_directory": "/home/jason"
+  }
+]

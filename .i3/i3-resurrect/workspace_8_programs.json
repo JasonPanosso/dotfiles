@@ -1,0 +1,8 @@
+[
+  {
+    "command": [
+      "/snap/gimp/393/usr/bin/gimp-2.10"
+    ],
+    "working_directory": "/home/jason"
+  }
+]

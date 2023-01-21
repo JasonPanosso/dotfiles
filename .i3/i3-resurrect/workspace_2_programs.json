@@ -1,0 +1,9 @@
+[
+  {
+    "command": [
+      "/usr/lib/slack/slack",
+      "--enable-crashpad"
+    ],
+    "working_directory": "/home/jason"
+  }
+]
