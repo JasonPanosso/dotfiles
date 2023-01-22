@@ -1,7 +1,7 @@
 [
   {
     "command": [
-      "/snap/bin/gimp"
+      "/opt/firefox/firefox-bin"
     ],
     "working_directory": "/home/jason"
   }

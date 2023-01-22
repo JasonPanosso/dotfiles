@@ -1,7 +1,7 @@
 [
   {
     "command": [
-      "/snap/firefox/2263/usr/lib/firefox/firefox"
+      "/usr/bin/firefox"
     ],
     "working_directory": "/home/jason"
   }

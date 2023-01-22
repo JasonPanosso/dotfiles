@@ -11,7 +11,7 @@
   },
   "layout": "splith",
   "marks": [],
-  "name": "4:4:tmux",
+  "name": "4:4<span> </span>main <span foreground='#f8c8dc'>\uf7d7</span><span> </span>",
   "orientation": "horizontal",
   "percent": 0.13558106169296988,
   "scratchpad_state": "none",

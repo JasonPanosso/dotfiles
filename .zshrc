@@ -6,6 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias rc="regolith-control-center"
 alias firefoxdev="/opt/firefox/firefox </dev/null &>/dev/null &"
+alias i3go="/home/jason/.restore-i3.sh"
 eval $(thefuck --alias)
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 # Set name of the theme to load --- if set to "random", it will
@@ -74,7 +75,7 @@ ZSH_THEME="headline/headline"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rbw zsh-autosuggestions jsontools zsh-syntax-highlighting autoenv)
+plugins=(git gitfast rbw zsh-autosuggestions jsontools zsh-syntax-highlighting autoenv)
 source /home/jason/.environment
 source /usr/local/lib/node_modules/@hyperupcall/autoenv/activate.sh
 source $ZSH/oh-my-zsh.sh
