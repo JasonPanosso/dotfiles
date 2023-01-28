@@ -7,6 +7,7 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias rc="regolith-control-center"
 alias firefoxdev="/opt/firefox/firefox </dev/null &>/dev/null &"
 alias i3go="/home/jason/.restore-i3.sh"
+alias rez="/home/jason/.local/bin/i3-resurrect restore -w"
 eval $(thefuck --alias)
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 # Set name of the theme to load --- if set to "random", it will
