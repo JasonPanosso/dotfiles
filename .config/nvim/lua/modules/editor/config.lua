@@ -17,7 +17,7 @@ function config.telescope()
       prompt_prefix = ' ',
       selection_caret = ' ',
       layout_config = {
-        horizontal = { prompt_position = 'top', results_width = 0.6 },
+        horizontal = { prompt_position = 'bottom', results_width = 0.6 },
         vertical = { mirror = false },
       },
       sorting_strategy = 'ascending',
