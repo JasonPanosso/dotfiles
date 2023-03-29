@@ -1,8 +1,7 @@
 [
   {
     "command": [
-      "/usr/lib/slack/slack",
-      "--enable-crashpad"
+      "/usr/bin/signal-desktop"
     ],
     "working_directory": "/home/jason"
   }

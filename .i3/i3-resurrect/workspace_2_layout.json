@@ -11,7 +11,7 @@
   },
   "layout": "splith",
   "marks": [],
-  "name": "2:2<span> </span>Slack <span foreground='#00dfc8'>\uf7d7</span><span> </span>",
+  "name": "2:2<span> </span>Signal <span foreground='#00dfc8'>\uf7d7</span><span> </span>",
   "orientation": "horizontal",
   "percent": 0.06025824964131995,
   "scratchpad_state": "none",
@@ -32,7 +32,7 @@
       },
       "layout": "splith",
       "marks": [],
-      "name": "Slack",
+      "name": "Signal",
       "orientation": "none",
       "percent": 1.0,
       "scratchpad_state": "none",
@@ -41,8 +41,8 @@
       "workspace_layout": "default",
       "swallows": [
         {
-          "class": "^Slack$",
-          "instance": "^slack$"
+          "class": "^Signal$",
+          "instance": "^signal$"
         }
       ]
     }
