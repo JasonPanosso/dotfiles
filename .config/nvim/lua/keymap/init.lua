@@ -212,7 +212,7 @@ nmap({
   { '<Leader>h', require('harpoon.mark').add_file, opts('Harpoon file') },
   { '<C-e>', ui.toggle_quick_menu, opts('Open Harpoon UI') },
   {
-    '<C-g>',
+    '<C-t>',
     function()
       ui.nav_file(1)
     end,
