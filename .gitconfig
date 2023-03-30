@@ -1,0 +1,49 @@
+[user]
+	name = jasonpanosso
+	email = jasonpanosso@protonmail.com
+[color]
+  ui = auto
+[alias]
+  aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+  ci = commit
+  co = checkout
+  st = status
+  fk = commit --amend --no-edit
+  push-with-lease = push --force-with-lease
+  review-local = "!git lg @{push}.."
+  uncommit = reset --soft HEAD~1
+  untrack = rm --cache --
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[init]
+	defaultBranch = main
+[core]
+  pager = cat
+	excludesfile = ~/.gitignore_global
+	editor = nvim
+  whitespace = -trailing-space
+[diff]
+  mnemonicPrefix = true
+  renames = true
+  wordRegex = .
+[fetch]
+  recurseSubmodules = on-demand
+[grep]
+  break = true
+  heading = true
+  lineNumber = true
+  extendedRegexp = true
+[log]
+  abbrevCommit = true
+  follow = true
+  decorate = false
+[push]
+  default = upstream
+  # followTags = true
+[tag]
+  sort = version:refname
+[status]
+  submoduleSummary = true
+  showUntrackedFiles = all

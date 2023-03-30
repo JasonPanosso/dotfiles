@@ -1,10 +1,6 @@
-# my personal dotfiles
+# My personal dotfiles
 
 tmux + nvim 🤤🤤🤤
-
-## **⚠️☠️ beware ☠️⚠️**
-
-ye be stepping on janky ground me lad
 
 ## Current env
 

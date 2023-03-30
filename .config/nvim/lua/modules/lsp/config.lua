@@ -80,6 +80,10 @@ function config.lspsaga()
       confirm = '<CR>',
       in_select = true,
     },
+    hover = {
+      open_link = '<CR>',
+      open_browser = '!firefox',
+    },
     -- This breaks shit. Why? I can bind two keys to things like code_action quit and definition quit, but outline will give me an error. ROFL.
     -- outline = {
     --   keys = {

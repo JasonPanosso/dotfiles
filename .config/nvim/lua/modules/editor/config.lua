@@ -46,6 +46,7 @@ function config.telescope()
   require('telescope').load_extension('fzy_native')
   require('telescope').load_extension('file_browser')
   require('telescope').load_extension('projects')
+  require('telescope').load_extension('emoji')
 end
 
 function config.nvim_treesitter()

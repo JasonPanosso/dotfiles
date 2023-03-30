@@ -26,6 +26,7 @@ package({
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-fzy-native.nvim',
     'nvim-telescope/telescope-file-browser.nvim',
+    'xiyaowong/telescope-emoji.nvim',
     'ahmedkhalf/project.nvim'
   },
 })

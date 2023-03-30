@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export DOTNET_ROOT="/usr/lib/dotnet"
+export VISUAL=nvim
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias rc="regolith-control-center"
 alias i3go="/home/jason/.restore-i3.sh"

@@ -116,7 +116,7 @@ nmap({
   {
     '<Leader>sm',
     cmd('Telescope keymaps'),
-    opts(noremap, silent, 'Show list of current user keymaps'),
+    opts(noremap, silent, '[S]how list of current user key[M]aps'),
   },
   {
     '<Leader>sb',
@@ -128,13 +128,18 @@ nmap({
     cmd('Telescope oldfiles'),
     opts(noremap, silent, '[?] Find recently opened files'),
   },
+  {
+    '<Leader>se',
+    cmd('Telescope emoji'),
+    opts(noremap, silent, '[S]earch [E]moji'),
+  },
 })
 
 -- LSP binds
 nmap({
 
   -- Toggle outline
-  { '<Leader>o', cmd('Lspsaga outline'), opts('LSP: Toggle outline') },
+  { '<Leader>o', cmd('Lspsaga outline'), opts('LSP: Toggle [O]utline') },
 
   -- Call hierarchy
   { '<Leader>ci', cmd('Lspsaga incoming_calls'), opts('LSP: Incoming Calls') },
@@ -156,9 +161,8 @@ nmap({
   { '<Leader>pd', cmd('Lspsaga peek_definition'), opts('LSP: [P]eek [D]efinition') },
 
   -- Diagnostics
-  { '<Leader>dl', cmd('Lspsaga show_line_diagnostics'), opts('Diagnostics: [S]how [L]ine') },
-  { '<Leader>dc', cmd('Lspsaga show_cursor_diagnostics'), opts('Diagnostics: [S]how [C]ursor') },
-  { '<Leader>db', cmd('Lspsaga show_buf_diagnostics'), opts('Diagnostics: [S]how [B]uffer') },
+  { '<Leader>dl', cmd('Lspsaga show_line_diagnostics'), opts('[D]iagnostics [L]ine') },
+  { '<Leader>db', cmd('Lspsaga show_buf_diagnostics'), opts('[D]iagnostics [B]uffer') },
 
   -- Diagnostic jump
   { '[e', cmd('Lspsaga diagnostic_jump_prev'), opts('Diagnostics: Jump pref') },

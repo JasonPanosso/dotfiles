@@ -7,7 +7,6 @@ Based on [dope](https://github.com/glepnir/dope)
 - Lazy
 - LSPSaga
 - Oil
-- NeoGit + diffview
 
 ## Things to fix
 
