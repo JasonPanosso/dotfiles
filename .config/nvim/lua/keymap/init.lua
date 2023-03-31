@@ -22,8 +22,8 @@ nmap({
   },
   -- yank
   { 'Y', 'y$', opts(noremap, 'Yank EOL') },
-  -- remove trailing white space
-  { '<Leader>t', cmd('TrimTrailingWhitespace'), opts(noremap, 'Trim Trailing Whitespace') },
+  -- <C-a> -> <C-g> to get around tmux prefix
+  { '<C-g>', '<C-a>', opts(noremap, 'Increment/Decrement number') },
   -- remove highlights
   { '<Leader>ch', cmd('nohlsearch'), opts(silent, 'Clear highlights') },
   -- start/end line

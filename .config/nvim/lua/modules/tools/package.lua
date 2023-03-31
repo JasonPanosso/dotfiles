@@ -58,4 +58,7 @@ package({
 package({
   'numToStr/Comment.nvim',
   config = conf.comment,
+  dependencies = {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+  },
 })

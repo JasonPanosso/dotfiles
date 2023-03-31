@@ -9,6 +9,7 @@ alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias rc="regolith-control-center"
 alias i3go="/home/jason/.restore-i3.sh"
 alias rez="/home/jason/.local/bin/i3-resurrect restore -w"
+alias ra="/usr/bin/ranger"
 eval $(thefuck --alias)
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 ZSH_THEME="spaceship"
