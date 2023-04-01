@@ -93,12 +93,21 @@ lspconfig.jsonls.setup({
   on_attach = function(client, _)
     client.server_capabilities.semanticTokensProvider = nil
   end,
+  capabilities = capabilities,
 })
 
 lspconfig.marksman.setup({
   on_attach = function(client, _)
     client.server_capabilities.semanticTokensProvider = nil
   end,
+  capabilities = capabilities,
+})
+
+lspconfig.cssls.setup({
+  on_attach = function(client, _)
+    client.server_capabilities.semanticTokensProvider = nil
+  end,
+  capabilities = capabilities,
 })
 
 -- local servers = {

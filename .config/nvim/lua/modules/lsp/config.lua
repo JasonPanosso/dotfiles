@@ -126,7 +126,7 @@ function config.mason()
       'json-lsp',
       'lua-language-server',
       'node-debug2-adapter',
-      'prettierd',
+      'prettier',
       'stylua',
       'svelte-language-server',
       'tailwindcss-language-server',
@@ -159,6 +159,7 @@ function config.null_ls()
           'typescript',
           'javascriptreact',
           'typescriptreact',
+          'css',
         },
       }),
       null_ls.builtins.diagnostics.eslint_d.with({
