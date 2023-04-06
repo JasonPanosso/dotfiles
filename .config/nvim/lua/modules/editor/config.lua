@@ -70,6 +70,7 @@ function config.nvim_treesitter()
         },
       },
     },
+    -- ts autotag
     autotag = {
       enable = true,
     },
@@ -81,8 +82,6 @@ function config.nvim_treesitter()
       vim.bo[opt.buf].indentexpr = 'nvim_treesitter#indent()'
     end,
   })
-
-  -- ts autotag
 end
 
 return config

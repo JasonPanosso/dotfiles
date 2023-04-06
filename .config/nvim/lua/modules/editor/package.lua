@@ -8,7 +8,7 @@ package({
   config = conf.nvim_treesitter,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    'windwp/nvim-ts-autotag'
+    'windwp/nvim-ts-autotag',
   },
 })
 
@@ -27,6 +27,6 @@ package({
     'nvim-telescope/telescope-fzy-native.nvim',
     'nvim-telescope/telescope-file-browser.nvim',
     'xiyaowong/telescope-emoji.nvim',
-    'ahmedkhalf/project.nvim'
+    'ahmedkhalf/project.nvim',
   },
 })

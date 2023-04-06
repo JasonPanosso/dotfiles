@@ -17,15 +17,14 @@ package({
     'json',
     'python',
     'svelte',
+    'markdown',
   },
   config = conf.nvim_lsp,
   dependencies = {
     'jose-elias-alvarez/null-ls.nvim',
     'glepnir/lspsaga.nvim',
-    'windwp/nvim-ts-autotag',
     'leafoftree/vim-svelte-plugin',
     'glepnir/lspsaga.nvim',
-    'windwp/nvim-autopairs',
     'j-hui/fidget.nvim',
   },
 })
@@ -43,6 +42,10 @@ package({
 package({
   'jose-elias-alvarez/null-ls.nvim',
   config = conf.null_ls,
+  dependencies = {
+    { 'neovim/nvim-lspconfig' },
+    { 'jose-elias-alvarez/typescript.nvim' },
+  },
 })
 
 package({
@@ -65,6 +68,7 @@ package({
     { 'hrsh7th/cmp-buffer' },
     { 'saadparwaiz1/cmp_luasnip' },
     { 'onsails/lspkind.nvim' },
+    { 'windwp/nvim-autopairs' },
   },
 })
 
@@ -75,3 +79,12 @@ package({
 })
 
 package({ 'L3MON4D3/LuaSnip', event = 'InsertCharPre', config = conf.lua_snip })
+
+package({
+  'jose-elias-alvarez/typescript.nvim',
+  config = conf.typescript,
+  dependencies = {
+    { 'jose-elias-alvarez/null-ls.nvim' },
+    { 'neovim/nvim-lspconfig' },
+  },
+})

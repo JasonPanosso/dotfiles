@@ -69,11 +69,11 @@ opt.relativenumber = true
 opt.signcolumn = 'yes'
 opt.spelloptions = 'camel'
 
-opt.textwidth = 82
--- opt.colorcolumn = '82'
+opt.textwidth = 80
+opt.colorcolumn = '80'
 
 opt.conceallevel = 0
 opt.mouse = 'a'
 opt.cursorline = true
-opt.showmatch = true
+opt.showmatch = false
 

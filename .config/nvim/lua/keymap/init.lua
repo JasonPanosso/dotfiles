@@ -13,6 +13,9 @@ xmap({ ' ', '', opts(noremap) })
 
 -- general binds
 nmap({
+  -- move lines
+  { '<A-j>', cmd('m+'), opts('Move line down'), },
+  { '<A-k>', cmd('m-2'), opts('Move line up'), },
   -- close buffer
   { 'Q', '<nop>' },
   {

@@ -113,16 +113,13 @@ function config.indent_blankline()
   require('indent_blankline').setup({
     char = '│',
     use_treesitter = true,
-    use_treesitter_scope = true,
+    use_treesitter_scope = false,
     show_first_indent_level = true,
     show_current_context = true,
-    -- show_current_context_start = false,
-    -- show_current_context_start_on_current_line = false,
     filetype_exclude = {
       'dashboard',
       'log',
       'TelescopePrompt',
-      'NeoTree',
     },
     buftype_exclude = { 'terminal', 'nofile', 'prompt' },
   })

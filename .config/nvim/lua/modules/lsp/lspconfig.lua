@@ -66,14 +66,14 @@ lspconfig.lua_ls.setup({
   },
 })
 
-lspconfig.tsserver.setup({
-  on_attach = function(client, _)
-    client.server_capabilities.semanticTokensProvider = nil
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  end,
-  capabilities = capabilities,
-})
+-- lspconfig.tsserver.setup({
+--   on_attach = function(client, _)
+--     client.server_capabilities.semanticTokensProvider = nil
+--     client.server_capabilities.documentFormattingProvider = false
+--     client.server_capabilities.documentRangeFormattingProvider = false
+--   end,
+--   capabilities = capabilities,
+-- })
 
 lspconfig.pyright.setup({
   on_attach = function(client, _)
@@ -109,21 +109,6 @@ lspconfig.cssls.setup({
   end,
   capabilities = capabilities,
 })
-
--- local servers = {
---   'dockerls',
---   'pyright',
---   'bashls',
---   'zls',
---   'jsonls',
---   'tsserver',
--- }
-
--- for _, server in ipairs(servers) do
---   lspconfig[server].setup({
---     capabilities = capabilities,
---   })
--- end
 
 vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
   local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)

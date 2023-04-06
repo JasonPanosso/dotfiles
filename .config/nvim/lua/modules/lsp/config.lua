@@ -47,7 +47,16 @@ function config.nvim_cmp()
 end
 
 function config.auto_pairs()
-  require('nvim-autopairs').setup({})
+  require('nvim-autopairs').setup({
+    check_ts = true,
+    ts_config = {
+      lua = { 'string' },
+      javascript = { 'template_string' },
+      typescript = { 'template_string' },
+      typescriptreact = { 'template_string' },
+      javascriptreact = { 'template_string' },
+    },
+  })
 end
 
 function config.lua_snip()
@@ -178,6 +187,25 @@ function config.null_ls()
       }),
       -- Markdown
       null_ls.builtins.diagnostics.markdownlint,
+      -- get ts code actions
+      require('typescript.extensions.null-ls.code-actions'),
+    },
+  })
+end
+
+function config.typescript()
+  require('typescript').setup({
+    disable_commands = false,
+    debug = false,
+    go_to_source_definition = {
+      fallback = true,
+    },
+    server = {
+      on_attach = function(client, _)
+        client.server_capabilities.semanticTokensProvider = nil
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end,
     },
   })
 end
