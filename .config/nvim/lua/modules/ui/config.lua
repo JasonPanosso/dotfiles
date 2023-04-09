@@ -182,6 +182,9 @@ function config.oil()
     float = {
       padding = 10,
       max_width = 60,
+      win_options = {
+        winblend = 0,
+      },
     },
   })
 end

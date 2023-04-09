@@ -4,6 +4,7 @@ local conf = require('modules.tools.config')
 package({
   'folke/neodev.nvim',
 })
+
 package({
   'glepnir/hlsearch.nvim',
   event = 'BufRead',
@@ -14,18 +15,12 @@ package({
 
 package({
   'norcalli/nvim-colorizer.lua',
-  ft = { 'lua', 'css', 'html', 'sass', 'less', 'typescriptreact', 'conf' },
+  ft = { 'lua', 'css', 'html', 'sass', 'less', 'typescriptreact', 'conf', 'config' },
+  event = 'BufRead',
   config = function()
     require('colorizer').setup()
   end,
 })
-
--- package({
---   'glepnir/nerdicons.nvim',
---   dev = true,
---   cmd = 'NerdIcons',
---   opts = true,
--- })
 
 package({
   'theprimeagen/harpoon',
@@ -50,6 +45,7 @@ package({
 package({
   'MunifTanjim/nui.nvim',
 })
+
 package({
   'TimUntersberger/neogit',
   config = conf.neogit,
