@@ -1,0 +1,112 @@
+! --------------------------------------------
+! -- This file is in the Xresource file format
+! --------------------------------------------
+
+! --------------------------------------------
+! -- Look name
+! --------------------------------------------
+
+regolith.look: Kanagawa
+
+! --------------------------------------------
+! -- Wallpaper 
+! --------------------------------------------
+
+! -- Specify either a complete file path to an image
+
+! -- regolith.wallpaper.file: /home/jason/.local/share/backgrounds/2023-01-05-14-33-45-wallpaper.png
+! -- regolith.wallpaper.options: zoom
+
+!-- *Or* specify a color
+
+regolith.wallpaper.color.primary:
+
+!-- If specifying a primary color, optional additional settings
+
+regolith.wallpaper.color.secondary:
+regolith.wallpaper.color.shading.type: 
+
+! --------------------------------------------
+! -- Lockscreen Wallpaper 
+! --------------------------------------------
+
+!-- the following keys can be set to specify the lockscreen background, as above with desktop wallpaper
+
+! -- Specify either a complete file path to an image
+! -- and (optionally) options how to display the file
+
+regolith.lockscreen.wallpaper.file: /home/jason/.local/share/backgrounds/2023-01-05-14-33-45-wallpaper.png
+regolith.lockscreen.wallpaper.options: zoom
+
+!-- *Or* specify a color
+
+regolith.lockscreen.wallpaper.color.primary:
+
+!-- If specifying a primary color, optional additional settings
+
+regolith.lockscreen.wallpaper.color.secondary:
+regolith.lockscreen.wallpaper.color.shading.type:
+
+! --------------------------------------------
+! -- Theme elements
+! --------------------------------------------
+
+gtk.theme_name: Kanagawa-BL
+gtk.icon_theme_name: Kanagawa
+
+! --------------------------------------------
+! -- Fonts
+! --------------------------------------------
+
+#define gtk_font_name Iosevka Nerd Font 14
+#define gtk_document_font_name Iosevka Aile 14
+#define gtk_monospace_font_name Iosevka Nerd Font 14
+
+gtk.font_name: gtk_font_name
+gtk.document_font_name: gtk_document_font_name
+gtk.monospace_font_name: gtk_monospace_font_name
+
+! --------------------------------------------
+! -- Colors
+! --------------------------------------------
+
+! Kanagawa colors
+#define color_base03   #1F1F28
+#define color_base02   #43242B
+#define color_base01   #363646
+#define color_base00   #DCD7BA
+#define color_base0    #54546D
+#define color_base1    #C8C093
+#define color_base2    #C8C093
+#define color_base3    #938AA9
+#define color_gray     #727169
+#define color_red      #C34043
+#define color_green    #76946A
+#define color_yellow   #C0A36E
+#define color_blue     #7E9CD8
+#define color_violet   #957FB8
+#define color_cyan     #6A9589
+#define color_orange   #FFA066
+#define color_ltred    #E82424
+#define color_ltgreen  #98BB6C
+#define color_ltyellow #E6C384
+#define color_ltblue   #7FB4CA
+#define color_magenta  #938AA9
+#define color_ltcyan   #7AA89f
+#define color_brown    #FF5D62
+
+
+! --------------------------------------------
+! -- Component resources
+! --------------------------------------------
+
+#include "/home/jason/.config/regolith2/looks/kanagawa/i3xrocks"
+#include "/home/jason/.config/regolith2/looks/kanagawa/i3-wm"
+#include "/home/jason/.config/regolith2/looks/kanagawa/gnome-terminal"
+
+! --------------------------------------------
+! -- Loader Path - Path to script responsible 
+! -- for configuring UI from Xres values
+! --------------------------------------------
+
+regolith.look.loader: /usr/share/regolith-look/default_loader.sh

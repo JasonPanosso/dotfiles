@@ -1,6 +1,7 @@
 i3-wm.gaps.inner.size: 0
 regolith.wallpaper.file: /home/jason/.local/share/backgrounds/2023-01-05-14-33-45-wallpaper.png
 regolith.lockscreen.wallpaper.file: /home/jason/.local/share/backgrounds/2023-01-05-14-33-45-wallpaper.png
-regolith.look.path: /usr/share/regolith-look/gruvbox
 i3-wm.bar.position: bottom
 Xft.dpi: 96
+
+regolith.look.path: /home/jason/.config/regolith2/looks/kanagawa
