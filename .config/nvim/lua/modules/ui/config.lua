@@ -36,14 +36,14 @@ function config.alpha()
   db.section.buttons.val = {
     db.button('f', ' ' .. ' Find file', ':Telescope find_files <CR>'),
     db.button('e', ' ' .. ' New file', ':ene <BAR> startinsert <CR>'),
-    db.button('p', ' ' .. ' Find project', ":lua require('telescope').extensions.projects.projects()<CR>"),
+    -- db.button('p', ' ' .. ' Find project', ":lua require('telescope').extensions.projects.projects()<CR>"),
     db.button('q', ' ' .. ' Quit', ':qa<CR>'),
   }
-  local function footer()
-    return 'Jason Panosso'
-  end
-
-  db.section.footer.val = footer()
+  -- local function footer()
+  --   return 'Jason Panosso'
+  -- end
+  --
+  -- db.section.footer.val = footer()
 
   db.section.footer.opts.hl = 'Type'
   db.section.header.opts.hl = 'Include'
