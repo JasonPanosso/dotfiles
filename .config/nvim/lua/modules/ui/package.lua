@@ -23,11 +23,6 @@ package({
   config = conf.gitsigns,
 })
 
--- package({
---   'nvim-neo-tree/neo-tree.nvim',
---   config = conf.neotree,
--- })
-
 package({
   'stevearc/oil.nvim',
   config = conf.oil,

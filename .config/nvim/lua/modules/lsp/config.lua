@@ -129,7 +129,6 @@ function config.mason()
       'black',
       'flake8',
       'pyright',
-      'css-lsp',
       'eslint_d',
       'html-lsp',
       'json-lsp',
@@ -142,6 +141,7 @@ function config.mason()
       'typescript-language-server',
       'marksman',
       'markdownlint',
+      'css-lsp',
     },
     auto_update = true,
   })

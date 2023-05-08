@@ -36,14 +36,8 @@ function config.alpha()
   db.section.buttons.val = {
     db.button('f', ' ' .. ' Find file', ':Telescope find_files <CR>'),
     db.button('e', ' ' .. ' New file', ':ene <BAR> startinsert <CR>'),
-    -- db.button('p', ' ' .. ' Find project', ":lua require('telescope').extensions.projects.projects()<CR>"),
     db.button('q', ' ' .. ' Quit', ':qa<CR>'),
   }
-  -- local function footer()
-  --   return 'Jason Panosso'
-  -- end
-  --
-  -- db.section.footer.val = footer()
 
   db.section.footer.opts.hl = 'Type'
   db.section.header.opts.hl = 'Include'
@@ -55,9 +49,31 @@ function config.alpha()
 end
 
 function config.lualine()
+  local lualine = require('lualine')
   local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
   end
+
+  -- Show macro recording status on statusline
+  local show_macro_recording = function()
+    local recording_register = vim.fn.reg_recording()
+    if recording_register == '' then
+      return ''
+    else
+      return 'Recording @' .. recording_register
+    end
+  end
+
+  vim.api.nvim_create_autocmd('RecordingEnter', {
+    callback = function()
+      lualine.refresh({ place = { 'statusline' } })
+    end,
+  })
+  vim.api.nvim_create_autocmd('RecordingLeave', {
+    callback = function()
+      lualine.refresh({ place = { 'statusline' } })
+    end,
+  })
 
   local diagnostics = {
     'diagnostics',
@@ -88,7 +104,7 @@ function config.lualine()
   local spaces = function()
     return 'spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
   end
-  require('lualine').setup({
+  lualine.setup({
     options = {
       globalstatus = true,
       icons_enabled = true,
@@ -99,9 +115,10 @@ function config.lualine()
       always_divide_middle = true,
     },
     sections = {
-      lualine_a = { 'mode' },
+      lualine_a = { 'mode', show_macro_recording },
       lualine_b = { 'branch' },
       lualine_c = { 'filename' },
+      lualine_d = { show_macro_recording },
       lualine_x = { diagnostics, diff, spaces, 'encoding', filetype },
       lualine_y = { location },
       lualine_z = { 'progress' },
