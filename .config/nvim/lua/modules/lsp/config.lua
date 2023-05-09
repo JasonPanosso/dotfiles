@@ -110,6 +110,7 @@ function config.lspsaga()
       color_mode = true,
     },
     ui = {
+      title = false,
       border = 'rounded',
     },
     beacon = {
@@ -202,7 +203,7 @@ function config.typescript()
     },
     server = {
       on_attach = function(client, _)
-        client.server_capabilities.semanticTokensProvider = nil
+        -- client.server_capabilities.semanticTokensProvider = nil
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
       end,

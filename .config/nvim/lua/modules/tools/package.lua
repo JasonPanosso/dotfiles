@@ -46,9 +46,13 @@ package({
   'MunifTanjim/nui.nvim',
 })
 
+-- package({
+--   'TimUntersberger/neogit',
+--   config = conf.neogit,
+-- })
+
 package({
-  'TimUntersberger/neogit',
-  config = conf.neogit,
+  'kdheepak/lazygit.nvim',
 })
 
 package({
@@ -56,5 +60,13 @@ package({
   config = conf.comment,
   dependencies = {
     'JoosepAlviste/nvim-ts-context-commentstring',
+  },
+})
+
+package({
+  'rest-nvim/rest.nvim',
+  config = conf.rest,
+  dependencies = {
+    'nvim-lua/plenary.nvim',
   },
 })

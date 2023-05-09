@@ -28,7 +28,7 @@ vim.diagnostic.config({
 
 lspconfig.svelte.setup({
   on_attach = function(client, _)
-    client.server_capabilities.semanticTokensProvider = nil
+    -- client.server_capabilities.semanticTokensProvider = nil
   end,
   capabilities = capabilities,
 })
@@ -36,7 +36,7 @@ vim.g.vim_svelte_plugin_use_typescript = 1
 
 lspconfig.lua_ls.setup({
   on_attach = function(client, _)
-    client.server_capabilities.semanticTokensProvider = nil
+    -- client.server_capabilities.semanticTokensProvider = nil
   end,
   capabilities = capabilities,
   settings = {
@@ -77,7 +77,7 @@ lspconfig.lua_ls.setup({
 
 lspconfig.pyright.setup({
   on_attach = function(client, _)
-    client.server_capabilities.semanticTokensProvider = nil
+    -- client.server_capabilities.semanticTokensProvider = nil
   end,
   capabilities = capabilities,
   settings = {
@@ -91,21 +91,21 @@ lspconfig.pyright.setup({
 
 lspconfig.jsonls.setup({
   on_attach = function(client, _)
-    client.server_capabilities.semanticTokensProvider = nil
+    -- client.server_capabilities.semanticTokensProvider = nil
   end,
   capabilities = capabilities,
 })
 
 lspconfig.marksman.setup({
   on_attach = function(client, _)
-    client.server_capabilities.semanticTokensProvider = nil
+    -- client.server_capabilities.semanticTokensProvider = nil
   end,
   capabilities = capabilities,
 })
 
 lspconfig.cssls.setup({
   on_attach = function(client, _)
-    client.server_capabilities.semanticTokensProvider = nil
+    -- client.server_capabilities.semanticTokensProvider = nil
   end,
   capabilities = capabilities,
 })

@@ -14,8 +14,8 @@ xmap({ ' ', '', opts(noremap) })
 -- general binds
 nmap({
   -- move lines
-  { '<A-j>', cmd('m+'), opts('Move line down'), },
-  { '<A-k>', cmd('m-2'), opts('Move line up'), },
+  { '<A-j>', cmd('m+'), opts('Move line down') },
+  { '<A-k>', cmd('m-2'), opts('Move line up') },
   -- close buffer
   { 'Q', '<nop>' },
   {
@@ -36,7 +36,8 @@ nmap({
   { '<Leader>lf', cmd('lua vim.lsp.buf.format{ async = true }'), opts(silent, 'Format file') },
   -- page up/down
   { '<C-d>', '<C-d>zz' },
-  { '<c-u>', '<c-u>zz' },
+  { '<C-f>', '<C-u>zz' },
+  { '<C-u>', '<C-u>zz' },
   -- better next/prev
   { 'n', 'nzzzv' },
   { 'N', 'Nzzzv' },
@@ -55,6 +56,9 @@ vmap({
   -- start/end line
   { 'H', '^' },
   { 'L', 'g_' },
+
+  -- Code action in visual mode
+  { '<Leader>ca', cmd('Lspsaga code_action'), opts('LSP: [C]ode [A]ction') },
 })
 
 -- usage of plugins
@@ -63,19 +67,28 @@ nmap({
   { '<Leader>pu', cmd('Lazy update'), opts(noremap, silent, 'Lazy update') },
   { '<Leader>pi', cmd('Lazy install'), opts(noremap, silent, 'Lazy install') },
 
-  -- NeoTree
+  -- Oil
   { '<Leader>pv', require('oil').open_float, opts(silent, 'Project view') },
 
   -- Undo Tree
   { '<Leader>u', cmd('UndotreeToggle'), opts('Toggle Undo Tree') },
 
   -- NeoGit
-  { '<Leader>ng', cmd('Neogit'), opts('Toggle NeoGit') },
+  -- { '<Leader>go', cmd('Neogit'), opts('Toggle NeoGit') },
+
+  -- LazyGit
+  { '<Leader>go', cmd('LazyGit'), opts(silent, 'Open LazyGit') },
+  { '<Leader>gc', cmd('LazyGitConfig'), opts(silent, 'Open LazyGit') },
 
   -- diffview
   { '<Leader>dvo', cmd('DiffviewOpen'), opts('Open Diffview') },
   { '<Leader>dvc', cmd('DiffviewClose'), opts('Close Diffview') },
   { '<Leader>fh', cmd('DiffviewFileHistory %'), opts('Toggle Diffview file history') },
+
+  -- rest
+  { '<Leader>ro', cmd('lua require"rest-nvim".run()'), opts('Rest under cursor') },
+  { '<Leader>rp', cmd('lua require"rest-nvim".run(true)'), opts('Rest preview request') },
+  { '<Leader>rl', cmd('lua require"rest-nvim".last()'), opts('Rest run last') },
 })
 
 -- Telescope
@@ -157,7 +170,7 @@ nmap({
   { 'gh', cmd('Lspsaga lsp_finder'), opts('LSP: Symbol Info') },
   { 'gd', cmd('Lspsaga goto_definition'), opts('LSP: [G]oto [D]efinition') },
   { 'gr', require('telescope.builtin').lsp_references, opts('LSP: [G]oto [R]eferences') },
-  { '<Leader>gt', cmd('Lspsaga goto_type_definition'), opts('LSP: [G]oto [T]ype definition') },
+  { 'gt', cmd('Lspsaga goto_type_definition'), opts('LSP: [G]oto [T]ype definition') },
 
   -- LSP Peek
   { '<Leader>pt', cmd('Lspsaga peek_type_definition'), opts('LSP: [P]eek [T]ype definition') },
@@ -166,6 +179,7 @@ nmap({
   -- Diagnostics
   { '<Leader>dl', cmd('Lspsaga show_line_diagnostics'), opts('[D]iagnostics [L]ine') },
   { '<Leader>db', cmd('Lspsaga show_buf_diagnostics'), opts('[D]iagnostics [B]uffer') },
+  { '<Leader>dc', cmd('Lspsaga show_cursor_diagnostics'), opts('[D]iagnostics [C]ursor') },
 
   -- Diagnostic jump
   { '[e', cmd('Lspsaga diagnostic_jump_prev'), opts('Diagnostics: Jump pref') },
@@ -173,6 +187,7 @@ nmap({
 
   -- Documentation
   { 'K', cmd('Lspsaga hover_doc'), opts('LSP: Hover Documentation') },
+  { '<Leader>K', cmd('Lspsaga hover_doc ++keep'), opts('LSP: Keep Hover Documentation') },
 
   -- LSPInfo
   {
@@ -215,31 +230,66 @@ nmap({
   { '<Leader>h', require('harpoon.mark').add_file, opts('Harpoon file') },
   { '<C-e>', ui.toggle_quick_menu, opts('Open Harpoon UI') },
   {
-    '<C-t>',
+    '<Leader>t',
     function()
       ui.nav_file(1)
     end,
     opts('Harpoon 1'),
   },
   {
-    '<C-b>',
+    '<Leader>b',
     function()
       ui.nav_file(2)
     end,
     opts('Harpoon 2'),
   },
   {
-    '<C-y>',
+    '<Leader>y',
     function()
       ui.nav_file(3)
     end,
     opts('Harpoon 3'),
   },
   {
-    '<C-n>',
+    '<Leader>n',
     function()
       ui.nav_file(4)
     end,
     opts('Harpoon 4'),
+  },
+  {
+    '<Leader>5',
+    function()
+      ui.nav_file(5)
+    end,
+    opts('Harpoon 5'),
+  },
+  {
+    '<Leader>6',
+    function()
+      ui.nav_file(6)
+    end,
+    opts('Harpoon 6'),
+  },
+  {
+    '<Leader>7',
+    function()
+      ui.nav_file(7)
+    end,
+    opts('Harpoon 7'),
+  },
+  {
+    '<Leader>8',
+    function()
+      ui.nav_file(8)
+    end,
+    opts('Harpoon 8'),
+  },
+  {
+    '<Leader>9',
+    function()
+      ui.nav_file(9)
+    end,
+    opts('Harpoon 9'),
   },
 })
