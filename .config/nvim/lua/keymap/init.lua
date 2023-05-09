@@ -68,7 +68,7 @@ nmap({
   { '<Leader>pi', cmd('Lazy install'), opts(noremap, silent, 'Lazy install') },
 
   -- Oil
-  { '<Leader>pv', require('oil').open_float, opts(silent, 'Project view') },
+  { '<Leader>pv', cmd('lua require("oil").open_float()'), opts(silent, 'Project view') },
 
   -- Undo Tree
   { '<Leader>u', cmd('UndotreeToggle'), opts('Toggle Undo Tree') },
@@ -169,7 +169,7 @@ nmap({
   -- LSP Goto
   { 'gh', cmd('Lspsaga lsp_finder'), opts('LSP: Symbol Info') },
   { 'gd', cmd('Lspsaga goto_definition'), opts('LSP: [G]oto [D]efinition') },
-  { 'gr', require('telescope.builtin').lsp_references, opts('LSP: [G]oto [R]eferences') },
+  { 'gr', cmd('lua require("telescope.builtin").lsp_references()'), opts('LSP: [G]oto [R]eferences') },
   { 'gt', cmd('Lspsaga goto_type_definition'), opts('LSP: [G]oto [T]ype definition') },
 
   -- LSP Peek
@@ -202,10 +202,10 @@ nmap({
   },
 
   -- Symbols
-  { '<Leader>ds', require('telescope.builtin').lsp_document_symbols, opts('LSP: [D]ocument [S]ymbols') },
+  { '<Leader>ds', cmd('lua require("telescope.builtin").lsp_document_symbols'), opts('LSP: [D]ocument [S]ymbols') },
   {
     '<Leader>ws',
-    require('telescope.builtin').lsp_dynamic_workspace_symbols,
+    cmd('lua require("telescope.builtin").lsp_dynamic_workspace_symbols()'),
     opts('LSP: [W]orkspace [S]ymbols'),
   },
 })
@@ -227,8 +227,8 @@ nmap({
 -- harpoon
 local ui = require('harpoon.ui')
 nmap({
-  { '<Leader>h', require('harpoon.mark').add_file, opts('Harpoon file') },
-  { '<C-e>', ui.toggle_quick_menu, opts('Open Harpoon UI') },
+  { '<Leader>h', cmd('lua require("harpoon.mark").add_file()'), opts('Harpoon file') },
+  { '<C-e>', cmd('lua require("harpoon.ui").toggle_quick_menu()'), opts('Open Harpoon UI') },
   {
     '<Leader>t',
     function()
