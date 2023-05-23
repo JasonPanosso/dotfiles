@@ -66,15 +66,6 @@ lspconfig.lua_ls.setup({
   },
 })
 
--- lspconfig.tsserver.setup({
---   on_attach = function(client, _)
---     client.server_capabilities.semanticTokensProvider = nil
---     client.server_capabilities.documentFormattingProvider = false
---     client.server_capabilities.documentRangeFormattingProvider = false
---   end,
---   capabilities = capabilities,
--- })
-
 lspconfig.pyright.setup({
   on_attach = function(client, _)
     -- client.server_capabilities.semanticTokensProvider = nil

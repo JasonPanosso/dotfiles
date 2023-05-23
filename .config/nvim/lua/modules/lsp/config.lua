@@ -144,7 +144,7 @@ function config.mason()
       'markdownlint',
       'css-lsp',
     },
-    auto_update = true,
+    auto_update = false,
   })
 end
 

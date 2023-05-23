@@ -73,7 +73,6 @@ opt.textwidth = 80
 opt.colorcolumn = '80'
 
 opt.conceallevel = 0
-opt.mouse = 'a'
+opt.mouse = ''
 opt.cursorline = true
 opt.showmatch = false
-

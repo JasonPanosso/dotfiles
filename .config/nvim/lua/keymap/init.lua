@@ -167,7 +167,7 @@ nmap({
   { '<Leader>ca', cmd('Lspsaga code_action'), opts('LSP: [C]ode [A]ction') },
 
   -- LSP Goto
-  { 'gh', cmd('Lspsaga lsp_finder'), opts('LSP: Symbol Info') },
+  { 'gh', cmd('Lspsaga lsp_finder'), opts('LSP: Symbol Info', silent ) },
   { 'gd', cmd('Lspsaga goto_definition'), opts('LSP: [G]oto [D]efinition') },
   { 'gr', cmd('lua require("telescope.builtin").lsp_references()'), opts('LSP: [G]oto [R]eferences') },
   { 'gt', cmd('Lspsaga goto_type_definition'), opts('LSP: [G]oto [T]ype definition') },
@@ -228,7 +228,7 @@ nmap({
 local ui = require('harpoon.ui')
 nmap({
   { '<Leader>h', cmd('lua require("harpoon.mark").add_file()'), opts('Harpoon file') },
-  { '<C-e>', cmd('lua require("harpoon.ui").toggle_quick_menu()'), opts('Open Harpoon UI') },
+  { '<Leader>e', cmd('lua require("harpoon.ui").toggle_quick_menu()'), opts('Open Harpoon UI') },
   {
     '<Leader>t',
     function()

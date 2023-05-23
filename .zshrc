@@ -7,6 +7,7 @@ export DOTNET_ROOT="/usr/lib/dotnet"
 export TERMINAL="/usr/bin/kitty"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+alias python=python3
 alias sioyek="$HOME/.local/bin/Sioyek-x86_64.AppImage"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias rc="regolith-control-center"
