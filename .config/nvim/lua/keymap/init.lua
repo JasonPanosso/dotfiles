@@ -227,8 +227,8 @@ nmap({
 -- harpoon
 local ui = require('harpoon.ui')
 nmap({
-  { '<Leader>h', cmd('lua require("harpoon.mark").add_file()'), opts('Harpoon file') },
-  { '<Leader>e', cmd('lua require("harpoon.ui").toggle_quick_menu()'), opts('Open Harpoon UI') },
+  { '<Leader>a', cmd('lua require("harpoon.mark").add_file()'), opts('Harpoon file') },
+  { '<Leader>h', cmd('lua require("harpoon.ui").toggle_quick_menu()'), opts('Open Harpoon UI') },
   {
     '<Leader>t',
     function()
@@ -252,6 +252,34 @@ nmap({
   },
   {
     '<Leader>n',
+    function()
+      ui.nav_file(4)
+    end,
+    opts('Harpoon 4'),
+  },
+  {
+    '<Leader>1',
+    function()
+      ui.nav_file(1)
+    end,
+    opts('Harpoon 1'),
+  },
+  {
+    '<Leader>2',
+    function()
+      ui.nav_file(2)
+    end,
+    opts('Harpoon 2'),
+  },
+  {
+    '<Leader>3',
+    function()
+      ui.nav_file(3)
+    end,
+    opts('Harpoon 3'),
+  },
+  {
+    '<Leader>4',
     function()
       ui.nav_file(4)
     end,
