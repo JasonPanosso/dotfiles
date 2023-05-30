@@ -68,6 +68,10 @@ function keymap.cmd(str)
   return '<cmd>' .. str .. '<CR>'
 end
 
+function keymap.cmdredraw(str)
+  return '<cmd>' .. str .. '<CR>:redraw<CR>'
+end
+
 -- visual
 function keymap.cu(str)
   return '<C-u><cmd>' .. str .. '<CR>'
@@ -80,7 +84,7 @@ local keymap_set = function(mode, tbl)
   })
   local len = #tbl
   if len < 2 then
-    -- vim.notify('keymap must has rhs')
+    vim.notify('Incorrect keymap set, keymap requires two key arguments')
     return
   end
 

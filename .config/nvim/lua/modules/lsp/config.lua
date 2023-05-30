@@ -143,8 +143,12 @@ function config.mason()
       'marksman',
       'markdownlint',
       'css-lsp',
+      'ansible-lint',
+      'ansible-language-server',
+      'codelldb',
+      'rust-analyzer',
     },
-    auto_update = false,
+    auto_update = true,
   })
 end
 
@@ -208,6 +212,34 @@ function config.typescript()
         client.server_capabilities.documentRangeFormattingProvider = false
       end,
     },
+  })
+end
+
+function config.rust_tools()
+  local rt = require('rust-tools')
+  local mason_path = vim.env.HOME .. '/.local/share/nvim/mason'
+  local extension_path = mason_path .. '/packages/codelldb/extension'
+  local codelldb_path = extension_path .. '/adapter/codelldb'
+  local liblldb_path = extension_path .. '/lldb/lib/liblldb.so'
+  rt.setup({
+    dap = {
+      adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
+    },
+    server = {
+      standalone = true,
+      capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      on_attach = function(_, bufnr)
+        vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, { buffer = bufnr })
+        vim.keymap.set('n', '<Leader>ca', rt.code_action_group.code_action_group, { buffer = bufnr })
+      end,
+    },
+    runnables = {
+      use_telescope = true,
+    },
+    debuggables = {
+      use_telescope = true,
+    },
+    autoSetHints = true,
   })
 end
 

@@ -14,6 +14,11 @@ function config.telescope()
   local fb_actions = require('telescope').extensions.file_browser.actions
   require('telescope').setup({
     defaults = {
+      mappings = {
+        n = {
+          ['q'] = require('telescope.actions').close,
+        },
+      },
       prompt_prefix = ' ',
       selection_caret = ' ',
       layout_config = {

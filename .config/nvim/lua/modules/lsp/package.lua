@@ -88,3 +88,9 @@ package({
     { 'neovim/nvim-lspconfig' },
   },
 })
+
+package({
+  'simrat39/rust-tools.nvim',
+  config = conf.rust_tools,
+  dependencies = { 'mfussenegger/nvim-dap', 'nvim-lua/plenary.nvim' },
+})
