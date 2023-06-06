@@ -62,7 +62,7 @@ vmap({
   { '<Leader>ca', cmd('Lspsaga code_action'), opts('LSP: [C]ode [A]ction', noremap) },
 })
 
--- usage of plugins
+-- plugin keymaps
 nmap({
   -- plugin manager: Lazy.nvim
   { '<Leader>pu', cmd('Lazy update'), opts('Lazy [P]lugin [U]pdate', noremap) },
@@ -129,12 +129,12 @@ nmap({
   {
     '<Leader>sm',
     cmd('Telescope keymaps'),
-    opts(noremap, '[S]how list of current user key[M]aps'),
+    opts(noremap, '[S]earch Key[M]aps'),
   },
   {
     '<Leader>sb',
     cmd('Telescope current_buffer_fuzzy_find'),
-    opts(noremap, 'Fuzzily [S]earch in current [B]uffer]'),
+    opts(noremap, '[S]earch [B]uffer] Fuzzily'),
   },
   {
     '<Leader>?',
@@ -145,6 +145,11 @@ nmap({
     '<Leader>se',
     cmd('Telescope emoji'),
     opts(noremap, '[S]earch [E]moji'),
+  },
+  {
+    '<Leader>sc',
+    cmd('Telescope dap commands'),
+    opts(noremap, '[S]earch DAP [C]ommands'),
   },
 })
 
@@ -176,7 +181,7 @@ nmap({
   -- Diagnostics
   { '<Leader>dl', cmd('Lspsaga show_line_diagnostics'), opts('[D]iagnostics [L]ine', noremap) },
   { '<Leader>db', cmd('Lspsaga show_buf_diagnostics'), opts('[D]iagnostics [B]uffer', noremap) },
-  { '<Leader>dc', cmd('Lspsaga show_cursor_diagnostics'), opts('[D]iagnostics [C]ursor', noremap) },
+  { '<Leader>dw', cmd('Lspsaga show_cursor_diagnostics'), opts('[D]iagnostics [C]ursor', noremap) },
 
   -- Diagnostic jump
   { '[e', cmd('Lspsaga diagnostic_jump_prev'), opts('Diagnostics: Jump pref', noremap) },
@@ -185,6 +190,7 @@ nmap({
   -- Documentation
   { 'K', cmd('Lspsaga hover_doc'), opts('LSP: Hover Documentation', noremap) },
   { '<Leader>K', cmd('Lspsaga hover_doc ++keep'), opts('LSP: Keep Hover Documentation', noremap) },
+  { '<Leader>k', vim.lsp.buf.signature_help, opts('LSP: Signature Help', noremap) },
 
   -- LSPInfo
   {
@@ -214,15 +220,17 @@ nmap({
 -- DAP
 nmap({
   { '<Leader>db', cmd('lua require"dap".toggle_breakpoint()'), opts(noremap) },
-  -- { '<Leader>dc', cmd('lua require"dap".continue()'),          opts(noremap) },
-  -- { '<Leader>di', cmd('lua require"dap".step_into()'),         opts(noremap) },
-  -- { '<Leader>do', cmd('lua require"dap".step_over()'),         opts(noremap) },
-  -- { '<Leader>dO', cmd('lua require"dap".step_out()'),          opts(noremap) },
-  -- { '<Leader>dr', cmd('lua require"dap".repl.toggle()'),       opts(noremap) },
-  -- { '<Leader>dl', cmd('lua require"dap".run_last()'),          opts(noremap) },
-  { '<Leader>du', cmd('lua require"dapui".toggle()'), opts(noremap) },
-  { '<Leader>dt', cmd('lua require"dap".terminate()'), opts(noremap) },
-  -- { '<Leader>de', cmd('lua require"dapui".eval()'),            opts(noremap) },
+  { '<Leader>dB', cmd('lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))'), opts(noremap) },
+  { '<Leader>lp', cmd('lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))'), opts(noremap) },
+  { '<Leader>dc', cmd('lua require"dap".continue()'), opts(noremap) },
+  { '<Leader>dr', cmd('lua require"dap".step_into()'), opts(noremap) },
+  { '<Leader>df', cmd('lua require"dap".step_over()'), opts(noremap) },
+  { '<Leader>dv', cmd('lua require"dap".step_out()'), opts(noremap) },
+  { '<Leader>dp', cmd('lua require"dap".repl.toggle()'), opts(noremap) },
+  { '<Leader>dd', cmd('lua require"dap".run_last()'), opts(noremap) },
+  { '<Leader>dt', cmd('lua require"dapui".toggle()'), opts(noremap) },
+  { '<Leader>dx', cmd('lua require"dap".terminate()'), opts(noremap) },
+  { '<Leader>de', cmd('lua require"dapui".eval()'), opts(noremap) },
 })
 --
 -- harpoon

@@ -18,14 +18,15 @@ package({
     'python',
     'svelte',
     'markdown',
+    'rust',
   },
   config = conf.nvim_lsp,
   dependencies = {
     'jose-elias-alvarez/null-ls.nvim',
     'glepnir/lspsaga.nvim',
-    'leafoftree/vim-svelte-plugin',
-    'glepnir/lspsaga.nvim',
     'j-hui/fidget.nvim',
+    'leafoftree/vim-svelte-plugin',
+    'windwp/nvim-ts-autotag',
   },
 })
 

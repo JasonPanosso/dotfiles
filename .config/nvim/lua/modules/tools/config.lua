@@ -104,4 +104,5 @@ function config.rest()
     yank_dry_run = true,
   })
 end
+
 return config

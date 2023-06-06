@@ -61,7 +61,7 @@ opt.whichwrap = 'h,l,<,>,[,],~'
 opt.breakindentopt = 'shift:2,min:20'
 opt.showbreak = '↳ '
 
-opt.foldlevelstart = 99
+opt.foldlevelstart = 999
 
 opt.number = true
 opt.relativenumber = true
