@@ -228,7 +228,7 @@ function config.rust_tools()
     },
     server = {
       standalone = true,
-      capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      capabilities = require('cmp_nvim_lsp').default_capabilities(),
       on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd('InsertLeave', {
           command = 'w',
@@ -244,12 +244,12 @@ function config.rust_tools()
         vim.keymap.set('n', '<Leader>ca', rt.code_action_group.code_action_group, { buffer = bufnr })
       end,
     },
-    runnables = {
-      use_telescope = true,
-    },
-    debuggables = {
-      use_telescope = true,
-    },
+    -- runnables = {
+    --   use_telescope = true,
+    -- },
+    -- debuggables = {
+    --   use_telescope = true,
+    -- },
     autoSetHints = true,
   })
 end

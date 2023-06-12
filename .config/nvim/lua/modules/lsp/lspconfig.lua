@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local signs = {
@@ -34,9 +34,6 @@ lspconfig.svelte.setup({
 })
 
 lspconfig.lua_ls.setup({
-  on_attach = function(client, _)
-    -- client.server_capabilities.semanticTokensProvider = nil
-  end,
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -66,9 +63,6 @@ lspconfig.lua_ls.setup({
 })
 
 lspconfig.pyright.setup({
-  on_attach = function(client, _)
-    -- client.server_capabilities.semanticTokensProvider = nil
-  end,
   capabilities = capabilities,
   settings = {
     python = {
@@ -80,23 +74,14 @@ lspconfig.pyright.setup({
 })
 
 lspconfig.jsonls.setup({
-  on_attach = function(client, _)
-    -- client.server_capabilities.semanticTokensProvider = nil
-  end,
   capabilities = capabilities,
 })
 
 lspconfig.marksman.setup({
-  on_attach = function(client, _)
-    -- client.server_capabilities.semanticTokensProvider = nil
-  end,
   capabilities = capabilities,
 })
 
 lspconfig.cssls.setup({
-  on_attach = function(client, _)
-    -- client.server_capabilities.semanticTokensProvider = nil
-  end,
   capabilities = capabilities,
 })
 
