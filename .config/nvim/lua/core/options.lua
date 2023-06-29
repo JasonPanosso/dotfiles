@@ -53,7 +53,7 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 opt.tabstop = 4
-opt.shiftwidth = 4
+opt.shiftwidth = 2
 
 -- wrap
 opt.linebreak = true

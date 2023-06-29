@@ -70,3 +70,11 @@ package({
     'nvim-lua/plenary.nvim',
   },
 })
+package({
+  'ThePrimeagen/refactoring.nvim',
+  config = conf.refactoring,
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'nvim-treesitter/nvim-treesitter',
+  },
+})

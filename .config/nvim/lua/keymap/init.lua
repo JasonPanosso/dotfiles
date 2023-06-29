@@ -221,7 +221,11 @@ nmap({
 nmap({
   { '<Leader>db', cmd('lua require"dap".toggle_breakpoint()'), opts(noremap) },
   { '<Leader>dB', cmd('lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))'), opts(noremap) },
-  { '<Leader>lp', cmd('lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))'), opts(noremap) },
+  {
+    '<Leader>lp',
+    cmd('lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))'),
+    opts(noremap),
+  },
   { '<Leader>dc', cmd('lua require"dap".continue()'), opts(noremap) },
   { '<Leader>dr', cmd('lua require"dap".step_into()'), opts(noremap) },
   { '<Leader>df', cmd('lua require"dap".step_over()'), opts(noremap) },

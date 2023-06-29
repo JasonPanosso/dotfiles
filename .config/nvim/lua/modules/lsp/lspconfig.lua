@@ -27,11 +27,9 @@ vim.diagnostic.config({
 })
 
 lspconfig.svelte.setup({
-  on_attach = function(client, _)
-    vim.g.vim_svelte_plugin_use_typescript = 1
-  end,
   capabilities = capabilities,
 })
+vim.g.vim_svelte_plugin_use_typescript = 1
 
 lspconfig.lua_ls.setup({
   capabilities = capabilities,

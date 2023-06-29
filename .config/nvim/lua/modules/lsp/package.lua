@@ -95,3 +95,9 @@ package({
   config = conf.rust_tools,
   dependencies = { 'mfussenegger/nvim-dap', 'nvim-lua/plenary.nvim' },
 })
+
+package({
+  'scalameta/nvim-metals',
+  config = conf.metals,
+  dependencies = { 'nvim-lua/plenary.nvim' },
+})

@@ -105,4 +105,8 @@ function config.rest()
   })
 end
 
+function config.refactoring()
+  require('refactoring').setup({})
+end
+
 return config
