@@ -25,33 +25,6 @@
       "floating": "auto_off",
       "fullscreen_mode": 0,
       "geometry": {
-        "x": 1920,
-        "y": 0,
-        "width": 636,
-        "height": 1051
-      },
-      "layout": "splith",
-      "marks": [],
-      "name": "Discord",
-      "orientation": "none",
-      "percent": 0.5,
-      "scratchpad_state": "none",
-      "sticky": false,
-      "type": "con",
-      "workspace_layout": "default",
-      "swallows": [
-        {
-          "class": "^discord$",
-          "instance": "^discord$"
-        }
-      ]
-    },
-    {
-      "border": "pixel",
-      "current_border_width": 2,
-      "floating": "auto_off",
-      "fullscreen_mode": 0,
-      "geometry": {
         "x": 0,
         "y": 0,
         "width": 1920,
