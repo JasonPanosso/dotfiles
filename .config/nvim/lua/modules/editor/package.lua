@@ -3,7 +3,7 @@ local conf = require('modules.editor.config')
 
 package({
   'nvim-treesitter/nvim-treesitter',
-  event = 'BufRead',
+  event = { 'BufRead', 'BufNewFile' },
   run = ':TSUpdate',
   config = conf.nvim_treesitter,
   dependencies = {

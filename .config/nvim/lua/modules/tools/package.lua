@@ -7,7 +7,7 @@ package({
 
 package({
   'glepnir/hlsearch.nvim',
-  event = 'BufRead',
+  event = { 'BufRead', 'BufNewFile' },
   config = function()
     require('hlsearch').setup()
   end,
@@ -16,7 +16,7 @@ package({
 package({
   'norcalli/nvim-colorizer.lua',
   ft = { 'lua', 'css', 'html', 'sass', 'less', 'typescriptreact', 'conf', 'config' },
-  event = 'BufRead',
+  event = { 'BufRead', 'BufNewFile' },
   config = function()
     require('colorizer').setup()
   end,
@@ -31,6 +31,7 @@ package({
 
 package({
   'mbbill/undotree',
+  event = { 'BufRead', 'BufNewFile' },
 })
 
 package({
@@ -39,6 +40,7 @@ package({
 
 package({
   'sindrets/diffview.nvim',
+  event = { 'BufRead', 'BufNewFile' },
   config = conf.diffview,
 })
 
@@ -46,35 +48,15 @@ package({
   'MunifTanjim/nui.nvim',
 })
 
--- package({
---   'TimUntersberger/neogit',
---   config = conf.neogit,
--- })
-
 package({
   'kdheepak/lazygit.nvim',
 })
 
 package({
   'numToStr/Comment.nvim',
+  event = { 'BufRead', 'BufNewFile' },
   config = conf.comment,
   dependencies = {
     'JoosepAlviste/nvim-ts-context-commentstring',
-  },
-})
-
-package({
-  'rest-nvim/rest.nvim',
-  config = conf.rest,
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-  },
-})
-package({
-  'ThePrimeagen/refactoring.nvim',
-  config = conf.refactoring,
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-treesitter/nvim-treesitter',
   },
 })

@@ -24,10 +24,17 @@ package({
   dependencies = {
     'jose-elias-alvarez/null-ls.nvim',
     'glepnir/lspsaga.nvim',
-    'j-hui/fidget.nvim',
-    'leafoftree/vim-svelte-plugin',
     'windwp/nvim-ts-autotag',
   },
+})
+
+package({
+  'j-hui/fidget.nvim',
+  tag = 'legacy',
+  event = { 'BufRead', 'BufNewFile' },
+  config = function()
+    require('fidget').setup()
+  end,
 })
 
 package({
@@ -43,9 +50,9 @@ package({
 package({
   'jose-elias-alvarez/null-ls.nvim',
   config = conf.null_ls,
+  event = { 'BufRead', 'BufNewFile' },
   dependencies = {
     { 'neovim/nvim-lspconfig' },
-    { 'jose-elias-alvarez/typescript.nvim' },
   },
 })
 
@@ -84,9 +91,12 @@ package({ 'L3MON4D3/LuaSnip', event = 'InsertCharPre', config = conf.lua_snip })
 package({
   'jose-elias-alvarez/typescript.nvim',
   config = conf.typescript,
-  dependencies = {
-    { 'jose-elias-alvarez/null-ls.nvim' },
-    { 'neovim/nvim-lspconfig' },
+  ft = {
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+    'javascript',
+    'javascriptreact',
   },
 })
 
@@ -94,10 +104,11 @@ package({
   'simrat39/rust-tools.nvim',
   config = conf.rust_tools,
   dependencies = { 'mfussenegger/nvim-dap', 'nvim-lua/plenary.nvim' },
+  ft = 'rust',
 })
 
-package({
-  'scalameta/nvim-metals',
-  config = conf.metals,
-  dependencies = { 'nvim-lua/plenary.nvim' },
-})
+-- package({
+--   'scalameta/nvim-metals',
+--   config = conf.metals,
+--   dependencies = { 'nvim-lua/plenary.nvim' },
+-- })

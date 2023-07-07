@@ -13,7 +13,7 @@ package({
 
 package({
   'lukas-reineke/indent-blankline.nvim',
-  event = 'BufRead',
+  event = { 'BufRead', 'BufNewFile' },
   config = conf.indent_blankline,
 })
 

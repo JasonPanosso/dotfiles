@@ -2,7 +2,6 @@ local config = {}
 
 function config.nvim_lsp()
   require('modules.lsp.lspconfig')
-  require('fidget').setup()
 end
 
 function config.nvim_cmp()
@@ -151,6 +150,7 @@ function config.mason()
     },
     auto_update = true,
   })
+  require('mason-lspconfig').setup()
 end
 
 function config.null_ls()
@@ -218,10 +218,19 @@ function config.typescript()
       fallback = true,
     },
     server = {
-      on_attach = function(client, _)
-        -- client.server_capabilities.semanticTokensProvider = nil
+      on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
+        vim.api.nvim_create_autocmd('InsertLeave', {
+          command = 'w',
+          buffer = bufnr,
+          nested = true,
+        })
+        vim.api.nvim_create_autocmd('TextChanged', {
+          command = 'w',
+          buffer = bufnr,
+          nested = true,
+        })
       end,
     },
   })
@@ -255,35 +264,29 @@ function config.rust_tools()
         vim.keymap.set('n', '<Leader>ca', rt.code_action_group.code_action_group, { buffer = bufnr })
       end,
     },
-    -- runnables = {
-    --   use_telescope = true,
-    -- },
-    -- debuggables = {
-    --   use_telescope = true,
-    -- },
     autoSetHints = true,
   })
 end
 
-function config.metals()
-  local metals_config = require('metals').bare_config()
-  metals_config.settings = {
-    showImplicitArguments = true,
-    excludedPackages = { 'akka.actor.typed.javadsl', 'com.github.swagger.akka.javadsl' },
-  }
-  metals_config.capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-  local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
-  vim.api.nvim_create_autocmd('FileType', {
-    -- NOTE: You may or may not want java included here. You will need it if you
-    -- want basic Java support but it may also conflict if you are using
-    -- something like nvim-jdtls which also works on a java filetype autocmd.
-    pattern = { 'scala', 'sbt', 'java' },
-    callback = function()
-      require('metals').initialize_or_attach(metals_config)
-    end,
-    group = nvim_metals_group,
-  })
-end
+-- function config.metals()
+--   local metals_config = require('metals').bare_config()
+--   metals_config.settings = {
+--     showImplicitArguments = true,
+--     excludedPackages = { 'akka.actor.typed.javadsl', 'com.github.swagger.akka.javadsl' },
+--   }
+--   metals_config.capabilities = require('cmp_nvim_lsp').default_capabilities()
+--
+--   local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
+--   vim.api.nvim_create_autocmd('FileType', {
+--     -- NOTE: You may or may not want java included here. You will need it if you
+--     -- want basic Java support but it may also conflict if you are using
+--     -- something like nvim-jdtls which also works on a java filetype autocmd.
+--     pattern = { 'scala', 'sbt', 'java' },
+--     callback = function()
+--       require('metals').initialize_or_attach(metals_config)
+--     end,
+--     group = nvim_metals_group,
+--   })
+-- end
 
 return config

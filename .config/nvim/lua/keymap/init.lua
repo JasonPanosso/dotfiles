@@ -1,5 +1,5 @@
 local keymap = require('core.keymap')
-local nmap, imap, cmap, xmap, vmap = keymap.nmap, keymap.imap, keymap.cmap, keymap.xmap, keymap.vmap
+local nmap, xmap, vmap = keymap.nmap, keymap.xmap, keymap.vmap
 local silent, noremap = keymap.silent, keymap.noremap
 local opts = keymap.new_opts
 local cmd = keymap.cmd
@@ -10,6 +10,7 @@ vim.g.mapleader = ' '
 
 -- leaderkey
 nmap({ ' ', '', opts(noremap) })
+vmap({ ' ', '', opts(noremap) })
 xmap({ ' ', '', opts(noremap) })
 
 -- general binds
@@ -82,11 +83,6 @@ nmap({
   { '<Leader>dvo', cmd('DiffviewOpen'), opts('[D]iff[V]iew [O]pen', noremap) },
   { '<Leader>dvc', cmd('DiffviewClose'), opts('[D]iff[V]iew [C]lose', noremap) },
   { '<Leader>dvfh', cmd('DiffviewFileHistory %'), opts('[D]iff[V]iew [F]ile [H]istory', noremap) },
-
-  -- rest
-  { '<Leader>rc', cmd('lua require"rest-nvim".run()'), opts('[R]est [C]ursor', noremap) },
-  { '<Leader>rp', cmd('lua require"rest-nvim".run(true)'), opts('[R]est [P]review request', noremap) },
-  { '<Leader>rl', cmd('lua require"rest-nvim".last()'), opts('[R]est run [L]ast', noremap) },
 })
 
 -- Telescope
