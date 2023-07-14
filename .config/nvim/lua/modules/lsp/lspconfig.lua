@@ -73,6 +73,10 @@ lspconfig.pyright.setup({
 
 lspconfig.jsonls.setup({
   capabilities = capabilities,
+  on_attach = function(client, _)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end,
 })
 
 lspconfig.marksman.setup({
@@ -86,6 +90,10 @@ lspconfig.cssls.setup({
 lspconfig.tailwindcss.setup({
   capabilities = capabilities,
   filetypes = { 'svelte' },
+})
+
+lspconfig.sqlls.setup({
+  capabilities = capabilities,
 })
 
 vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)

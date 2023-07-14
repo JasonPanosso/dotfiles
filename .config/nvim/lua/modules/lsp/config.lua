@@ -147,6 +147,7 @@ function config.mason()
       'ansible-language-server',
       'codelldb',
       'rust-analyzer',
+      'sqlls',
     },
     auto_update = true,
   })
@@ -165,13 +166,6 @@ function config.null_ls()
       -- TS/JS/Svelte formatter/linter
       null_ls.builtins.formatting.prettier.with({
         extra_filetypes = { 'svelte' },
-        filetypes = {
-          'html',
-          'yaml',
-          'markdown',
-          'css',
-          'typescript',
-        },
       }),
       null_ls.builtins.code_actions.eslint_d,
       null_ls.builtins.formatting.eslint_d.with({
@@ -204,6 +198,15 @@ function config.null_ls()
       }),
       -- Markdown
       null_ls.builtins.diagnostics.markdownlint,
+
+      -- Postgresql
+      null_ls.builtins.formatting.sqlfluff.with({
+        extra_args = { '--dialect', 'postgres' }, -- change to your dialect
+      }),
+
+      null_ls.builtins.diagnostics.sqlfluff.with({
+        extra_args = { '--dialect', 'postgres' }, -- change to your dialect
+      }),
       -- get ts code actions
       require('typescript.extensions.null-ls.code-actions'),
     },

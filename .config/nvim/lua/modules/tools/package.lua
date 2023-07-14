@@ -25,7 +25,10 @@ package({
 package({
   'theprimeagen/harpoon',
   config = function()
-    require('harpoon').setup()
+    require('harpoon').setup({
+      tabline = true,
+      tabline_prefix = " ",
+    })
   end,
 })
 

@@ -4,5 +4,11 @@
       "/usr/bin/signal-desktop"
     ],
     "working_directory": "/home/jason"
+  },
+  {
+    "command": [
+      "/usr/bin/slack"
+    ],
+    "working_directory": "/home/jason"
   }
 ]

@@ -1,7 +1,7 @@
 [
   {
     "command": [
-      "/usr/bin/firefox"
+      "/usr/bin/caprine"
     ],
     "working_directory": "/home/jason"
   }

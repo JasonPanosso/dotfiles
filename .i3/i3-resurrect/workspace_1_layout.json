@@ -32,7 +32,7 @@
       },
       "layout": "splith",
       "marks": [],
-      "name": "Mozilla Firefox",
+      "name": "Caprine",
       "orientation": "none",
       "percent": 0.5,
       "scratchpad_state": "none",
@@ -41,8 +41,8 @@
       "workspace_layout": "default",
       "swallows": [
         {
-          "class": "^firefox$",
-          "instance": "^Navigator$"
+          "class": "^Caprine$",
+          "instance": "^caprine$"
         }
       ]
     }

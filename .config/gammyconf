@@ -15,7 +15,7 @@
     "temp_high": 6500,
     "temp_low": 3400,
     "temp_speed": 60.0,
-    "temp_step": 84,
+    "temp_step": 81,
     "temp_sunrise": "06:00:00",
     "temp_sunset": "16:00:00",
     "wnd_show_on_startup": false,
