@@ -12,6 +12,7 @@ alias sioyek="$HOME/.local/bin/Sioyek-x86_64.AppImage"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias rc="regolith-control-center"
 alias i3go="$HOME/.restore-i3.sh"
+alias i3golaptop="$HOME/.restore-i3-laptop.sh"
 alias rez="$HOME/.local/bin/i3-resurrect restore -w"
 alias ra="/usr/bin/ranger"
 eval $(thefuck --alias)
