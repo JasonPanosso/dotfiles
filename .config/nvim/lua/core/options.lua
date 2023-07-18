@@ -75,3 +75,5 @@ opt.conceallevel = 0
 opt.mouse = 'a'
 opt.cursorline = true
 opt.showmatch = false
+
+opt.showtabline = 2

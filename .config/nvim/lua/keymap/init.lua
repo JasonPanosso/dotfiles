@@ -48,7 +48,9 @@ nmap({
   -- chmod x
   { '<Leader>x', cmd('!chmod +x %'), opts('chmod x', silent, noremap) },
   -- alt file
-  { '<C-^>', cmd('b#'), opts(noremap) }
+  { '<C-^>', cmd('b#'), opts(noremap) },
+  -- lsp restart
+  { '<Leader>lr', cmd('LspRestart'), opts(noremap) },
 })
 
 vmap({
@@ -64,7 +66,7 @@ vmap({
   -- Code action in visual mode
   { '<Leader>ca', cmd('Lspsaga code_action'), opts('LSP: [C]ode [A]ction', noremap) },
   -- alt file
-  { '<C-^>', cmd('b#'), opts(noremap) }
+  { '<C-^>', cmd('b#'), opts(noremap) },
 })
 
 -- plugin keymaps

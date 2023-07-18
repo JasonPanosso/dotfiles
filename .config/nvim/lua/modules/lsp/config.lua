@@ -87,7 +87,7 @@ function config.lspsaga()
       exec = '<CR>',
       mark = 'a',
       confirm = '<CR>',
-      in_select = true,
+      in_select = false,
     },
     hover = {
       open_link = '<CR>',
