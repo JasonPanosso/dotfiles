@@ -59,27 +59,6 @@ function config.auto_pairs()
   })
 end
 
-function config.lua_snip()
-  local ls = require('luasnip')
-  local types = require('luasnip.util.types')
-  ls.config.set_config({
-    history = true,
-    enable_autosnippets = true,
-    updateevents = 'TextChanged,TextChangedI',
-    ext_opts = {
-      [types.choiceNode] = {
-        active = {
-          virt_text = { { '<- choiceNode', 'Comment' } },
-        },
-      },
-    },
-  })
-  require('luasnip.loaders.from_vscode').lazy_load()
-  require('luasnip.loaders.from_vscode').lazy_load({
-    paths = { './snippets/' },
-  })
-end
-
 function config.lspsaga()
   require('lspsaga').setup({
     rename = {
@@ -220,7 +199,13 @@ function config.typescript()
     go_to_source_definition = {
       fallback = true,
     },
+    single_file_support = false,
     server = {
+      root_dir = function(fname)
+        return require('lspconfig.util').root_pattern('.git/')(fname)
+          or require('lspconfig.util').root_pattern('tsconfig.json')(fname)
+          or require('lspconfig.util').root_pattern('package.json', 'jsconfig.json')(fname)
+      end,
       on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false

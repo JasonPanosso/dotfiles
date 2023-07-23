@@ -2,9 +2,20 @@ local config = {}
 
 function config.lua_snip()
   local ls = require('luasnip')
+  local types = require('luasnip.util.types')
   ls.config.set_config({
-    delete_check_events = 'TextChanged,InsertEnter',
+    history = true,
+    enable_autosnippets = true,
+    updateevents = 'TextChanged,TextChangedI',
+    ext_opts = {
+      [types.choiceNode] = {
+        active = {
+          virt_text = { { '<- choiceNode', 'Comment' } },
+        },
+      },
+    },
   })
+  require('luasnip.loaders.from_vscode').lazy_load()
   require('luasnip.loaders.from_vscode').lazy_load({
     paths = { './snippets/' },
   })
@@ -12,11 +23,19 @@ end
 
 function config.telescope()
   local fb_actions = require('telescope').extensions.file_browser.actions
+  local actions = require('telescope.actions')
   require('telescope').setup({
     defaults = {
+      path_display = { 'smart' },
       mappings = {
         n = {
-          ['q'] = require('telescope.actions').close,
+          ['q'] = actions.close,
+        },
+        i = {
+          ['<C-j>'] = actions.move_selection_next,
+          ['<C-k>'] = actions.move_selection_previous,
+          ['<C-n>'] = actions.move_selection_next,
+          ['<C-p>'] = actions.move_selection_previous,
         },
       },
       prompt_prefix = ' ',
@@ -60,7 +79,7 @@ function config.nvim_treesitter()
 
   require('nvim-treesitter.configs').setup({
     ensure_installed = 'all',
-    ignore_install = { 'phpdoc' },
+    ignore_install = { 'phpdoc', 'sql' },
     highlight = {
       enable = true,
     },
@@ -80,6 +99,21 @@ function config.nvim_treesitter()
       enable = true,
     },
   })
+
+  -- postgresql parser
+  local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+  parser_config.postgres = {
+    install_info = {
+      url = '$HOME/Projects/tree-sitter-sql', -- local path or git repo
+      files = { 'src/parser.c', 'src/scanner.cc' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+      -- optional entries:
+      branch = 'main', -- default branch in case of git repo if different from master
+      -- generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+      requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
+      filetype = "sql',",
+    },
+  }
+
   --set indent for jsx tsx
   vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'javascriptreact', 'typescriptreact' },

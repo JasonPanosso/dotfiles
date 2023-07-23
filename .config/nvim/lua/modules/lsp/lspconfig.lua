@@ -92,9 +92,9 @@ lspconfig.tailwindcss.setup({
   filetypes = { 'svelte' },
 })
 
-lspconfig.sqlls.setup({
-  capabilities = capabilities,
-})
+-- lspconfig.sqlls.setup({
+--   capabilities = capabilities,
+-- })
 
 vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
   local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)

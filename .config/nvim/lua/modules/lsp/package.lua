@@ -86,8 +86,6 @@ package({
   config = conf.auto_pairs,
 })
 
-package({ 'L3MON4D3/LuaSnip', event = 'InsertCharPre', config = conf.lua_snip })
-
 package({
   'jose-elias-alvarez/typescript.nvim',
   config = conf.typescript,

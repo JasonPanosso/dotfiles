@@ -9,6 +9,7 @@ package({
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'windwp/nvim-ts-autotag',
+    'tpope/vim-sleuth',
   },
 })
 
@@ -16,6 +17,9 @@ package({
   'L3MON4D3/LuaSnip',
   event = 'InsertCharPre',
   config = conf.lua_snip,
+  dependencies = {
+    'rafamadriz/friendly-snippets',
+  },
 })
 
 package({
