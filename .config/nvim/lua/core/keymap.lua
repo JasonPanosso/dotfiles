@@ -1,6 +1,28 @@
 local keymap = {}
 local opts = {}
 
+function SelectInnerLine()
+  vim.cmd('normal! ^')
+  vim.cmd('normal! v$')
+  vim.cmd('normal! g_oO')
+end
+
+vim.cmd([[
+  function! InnerLine()
+    lua SelectInnerLine()
+    set opfunc=InnerLineOp
+  endfunction
+
+  function! InnerLineOp(type)
+    if a:type == 'v'
+      normal! `[v`]
+    endif
+  endfunction
+
+omap il :call InnerLine()<CR>
+xmap il :call InnerLine()<CR>
+]])
+
 function opts:new(instance)
   instance = instance
     or {
@@ -110,6 +132,7 @@ local function map(mod)
 end
 
 keymap.nmap = map('n')
+keymap.omap = map('o')
 keymap.imap = map('i')
 keymap.cmap = map('c')
 keymap.vmap = map('v')

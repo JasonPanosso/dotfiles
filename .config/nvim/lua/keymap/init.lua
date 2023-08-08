@@ -1,5 +1,5 @@
 local keymap = require('core.keymap')
-local nmap, xmap, vmap = keymap.nmap, keymap.xmap, keymap.vmap
+local nmap, xmap, vmap, omap = keymap.nmap, keymap.xmap, keymap.vmap, keymap.omap
 local silent, noremap = keymap.silent, keymap.noremap
 local opts = keymap.new_opts
 local cmd = keymap.cmd

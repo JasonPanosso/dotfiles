@@ -19,6 +19,6 @@
     "temp_sunrise": "06:00:00",
     "temp_sunset": "16:00:00",
     "wnd_show_on_startup": false,
-    "wnd_x": 2880,
+    "wnd_x": 640,
     "wnd_y": 0
 }

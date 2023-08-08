@@ -127,6 +127,7 @@ function config.mason()
       'codelldb',
       'rust-analyzer',
       'sqlls',
+      'prisma-language-server',
     },
     auto_update = true,
   })
@@ -147,20 +148,20 @@ function config.null_ls()
         extra_filetypes = { 'svelte' },
       }),
       null_ls.builtins.code_actions.eslint_d,
-      null_ls.builtins.formatting.eslint_d.with({
-        extra_filetypes = { 'svelte' },
-        condition = function(utils)
-          local check = utils.root_has_file({
-            '.eslintrc',
-            '.eslintrc.js',
-            '.eslintrc.cjs',
-            '.eslintrc.yaml',
-            '.eslintrc.yml',
-            '.eslintrc.json',
-          })
-          return check
-        end,
-      }),
+      -- null_ls.builtins.formatting.eslint_d.with({
+      --   extra_filetypes = { 'svelte' },
+      --   condition = function(utils)
+      --     local check = utils.root_has_file({
+      --       '.eslintrc',
+      --       '.eslintrc.js',
+      --       '.eslintrc.cjs',
+      --       '.eslintrc.yaml',
+      --       '.eslintrc.yml',
+      --       '.eslintrc.json',
+      --     })
+      --     return check
+      --   end,
+      -- }),
       null_ls.builtins.diagnostics.eslint_d.with({
         extra_filetypes = { 'svelte' },
         condition = function(utils)
@@ -186,6 +187,7 @@ function config.null_ls()
       null_ls.builtins.diagnostics.sqlfluff.with({
         extra_args = { '--dialect', 'postgres' }, -- change to your dialect
       }),
+
       -- get ts code actions
       require('typescript.extensions.null-ls.code-actions'),
     },

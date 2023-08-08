@@ -92,6 +92,10 @@ lspconfig.tailwindcss.setup({
   filetypes = { 'svelte' },
 })
 
+lspconfig.prismals.setup({
+  capabilities = capabilities,
+})
+
 -- lspconfig.sqlls.setup({
 --   capabilities = capabilities,
 -- })
