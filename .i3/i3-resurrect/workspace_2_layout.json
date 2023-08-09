@@ -32,34 +32,6 @@
       },
       "layout": "splith",
       "marks": [],
-      "name": "Signal",
-      "orientation": "none",
-      "percent": 1.0,
-      "scratchpad_state": "none",
-      "sticky": false,
-      "type": "con",
-      "workspace_layout": "default",
-      "swallows": [
-        {
-          "class": "^Signal$",
-          "instance": "^signal$"
-        }
-      ]
-    },
-
-    {
-      "border": "pixel",
-      "current_border_width": 2,
-      "floating": "auto_off",
-      "fullscreen_mode": 0,
-      "geometry": {
-        "x": 1920,
-        "y": 0,
-        "width": 1920,
-        "height": 1055
-      },
-      "layout": "splith",
-      "marks": [],
       "name": "Slack",
       "orientation": "none",
       "percent": 1.0,
