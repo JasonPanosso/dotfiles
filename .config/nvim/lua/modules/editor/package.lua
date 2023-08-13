@@ -10,7 +10,17 @@ package({
     'nvim-treesitter/nvim-treesitter-textobjects',
     'windwp/nvim-ts-autotag',
     'tpope/vim-sleuth',
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    'numToStr/Comment.nvim',
   },
+})
+
+package({
+  'numToStr/Comment.nvim',
+  event = { 'BufRead', 'BufNewFile' },
+  config = function()
+    require('Comment').setup()
+  end,
 })
 
 package({

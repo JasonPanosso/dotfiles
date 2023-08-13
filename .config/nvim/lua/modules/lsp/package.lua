@@ -19,12 +19,13 @@ package({
     'svelte',
     'markdown',
     'rust',
+    'sql',
+    'prisma'
   },
   config = conf.nvim_lsp,
   dependencies = {
     'jose-elias-alvarez/null-ls.nvim',
     'glepnir/lspsaga.nvim',
-    'windwp/nvim-ts-autotag',
   },
 })
 

@@ -28,8 +28,19 @@ vim.diagnostic.config({
 
 lspconfig.svelte.setup({
   capabilities = capabilities,
+  on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd('InsertLeave', {
+      command = 'w',
+      buffer = bufnr,
+      nested = true,
+    })
+    vim.api.nvim_create_autocmd('TextChanged', {
+      command = 'w',
+      buffer = bufnr,
+      nested = true,
+    })
+  end,
 })
-vim.g.vim_svelte_plugin_use_typescript = 1
 
 lspconfig.lua_ls.setup({
   capabilities = capabilities,

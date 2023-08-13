@@ -83,12 +83,15 @@ nmap({
 
   -- LazyGit
   { '<Leader>go', cmd('LazyGit'), opts('Open LazyGit', noremap) },
-  { '<Leader>gc', cmd('LazyGitConfig'), opts('Open LazyGit', noremap) },
 
   -- diffview
   { '<Leader>dvo', cmd('DiffviewOpen'), opts('[D]iff[V]iew [O]pen', noremap) },
   { '<Leader>dvc', cmd('DiffviewClose'), opts('[D]iff[V]iew [C]lose', noremap) },
   { '<Leader>dvfh', cmd('DiffviewFileHistory %'), opts('[D]iff[V]iew [F]ile [H]istory', noremap) },
+
+  -- trouble
+  { '<Leader>to', cmd('TroubleToggle'), opts('[T]rouble [O]pen', noremap) },
+  { '<Leader>tr', cmd('TroubleRefresh'), opts('[T]rouble [R]efresh', noremap) },
 })
 
 -- Telescope
@@ -244,34 +247,6 @@ local ui = require('harpoon.ui')
 nmap({
   { '<Leader>a', cmdredraw('lua require("harpoon.mark").add_file()'), opts('Harpoon file', noremap) },
   { '<Leader>h', cmd('lua require("harpoon.ui").toggle_quick_menu()'), opts('[H]arpoon UI', noremap) },
-  {
-    '<Leader>t',
-    function()
-      ui.nav_file(1)
-    end,
-    opts('Harpoon 1', noremap),
-  },
-  {
-    '<Leader>b',
-    function()
-      ui.nav_file(2)
-    end,
-    opts('Harpoon 2', noremap),
-  },
-  {
-    '<Leader>y',
-    function()
-      ui.nav_file(3)
-    end,
-    opts('Harpoon 3', noremap),
-  },
-  {
-    '<Leader>n',
-    function()
-      ui.nav_file(4)
-    end,
-    opts('Harpoon 4', noremap),
-  },
   {
     '<Leader>1',
     function()

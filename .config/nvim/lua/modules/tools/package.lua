@@ -64,10 +64,6 @@ package({
 })
 
 package({
-  'numToStr/Comment.nvim',
-  event = { 'BufRead', 'BufNewFile' },
-  config = conf.comment,
-  dependencies = {
-    'JoosepAlviste/nvim-ts-context-commentstring',
-  },
+  'folke/trouble.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
