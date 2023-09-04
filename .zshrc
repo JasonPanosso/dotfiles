@@ -16,6 +16,7 @@ alias i3golaptop="$HOME/.restore-i3-laptop.sh"
 alias rez="$HOME/.local/bin/i3-resurrect restore -w"
 alias ra="/usr/bin/ranger"
 alias supa="npx supabase"
+alias pt="psql postgresql://supabase_admin:postgres@localhost:54322/postgres -a -f ../supabase/clear_database.sql > logs/.drop_db.log 2> logs/.drop_db.error.log && psql postgresql://supabase_admin:postgres@localhost:54322/postgres -a -f ../supabase/seed.sql > logs/.seed_db.log 2> logs/.seed_db.error.log && npx playwright test"
 eval $(thefuck --alias)
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 ZSH_THEME="spaceship"
@@ -25,3 +26,7 @@ source $HOME/.environment
 source $ZSH/oh-my-zsh.sh
 source $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(jenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
