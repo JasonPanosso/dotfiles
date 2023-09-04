@@ -50,7 +50,7 @@ nmap({
   -- alt file
   { '<C-^>', cmd('b#'), opts(noremap) },
   -- lsp restart
-  { '<Leader>lr', cmd('LspRestart'), opts(noremap) },
+  { '<Leader>lr', cmd('LspStop<CR>:sleep 100m<CR>:LspStart'), opts(noremap) },
 })
 
 vmap({
