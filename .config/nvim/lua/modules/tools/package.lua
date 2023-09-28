@@ -3,6 +3,7 @@ local conf = require('modules.tools.config')
 
 package({
   'folke/neodev.nvim',
+  lazy = false,
 })
 
 package({
@@ -47,6 +48,7 @@ package({
 
 package({
   'christoomey/vim-tmux-navigator',
+  lazy = false,
 })
 
 package({
@@ -57,13 +59,25 @@ package({
 
 package({
   'MunifTanjim/nui.nvim',
+  lazy = false,
 })
 
 package({
   'kdheepak/lazygit.nvim',
+  lazy = false,
 })
 
 package({
   'folke/trouble.nvim',
+  event = { 'BufRead', 'BufNewFile' },
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
+
+package({
+  'rest-nvim/rest.nvim',
+  event = { 'BufRead', 'BufNewFile' },
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  config = conf.rest,
+})
+
+package({ 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' })

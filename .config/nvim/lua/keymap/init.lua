@@ -1,5 +1,5 @@
 local keymap = require('core.keymap')
-local nmap, xmap, vmap, omap = keymap.nmap, keymap.xmap, keymap.vmap, keymap.omap
+local nmap, xmap, vmap = keymap.nmap, keymap.xmap, keymap.vmap
 local silent, noremap = keymap.silent, keymap.noremap
 local opts = keymap.new_opts
 local cmd = keymap.cmd
@@ -30,12 +30,12 @@ nmap({
   -- <C-a> -> <C-g> to get around tmux prefix
   { '<C-g>', '<C-a>', opts('Increment/Decrement number', noremap) },
   -- remove highlights
-  { '<Leader>ch', cmd('nohlsearch'), opts('Clear highlights', noremap) },
+  { '<Leader>ch', cmd('nohlsearch'), opts('[C]lear [H]ighlights', noremap) },
   -- start/end line
   { 'H', '^', opts(noremap) },
   { 'L', 'g_', opts(noremap) },
   -- async format
-  { '<Leader>lf', cmdredraw('lua vim.lsp.buf.format{ async = true }'), opts('Format file', noremap) },
+  { '<Leader>lf', cmdredraw('lua vim.lsp.buf.format{ async = true }'), opts('[L]sp [F]ormat', noremap) },
   -- page up/down
   { '<C-d>', '<C-d>zz', opts(noremap) },
   { '<C-f>', '<C-u>zz', opts(noremap) },
@@ -51,6 +51,8 @@ nmap({
   { '<C-^>', cmd('b#'), opts(noremap) },
   -- lsp restart
   { '<Leader>lr', cmd('LspStop<CR>:sleep 100m<CR>:LspStart'), opts(noremap) },
+  -- better gx
+  { 'gx', cmd('lua require("core.utils").gx()'), opts(noremap, silent) },
 })
 
 vmap({
@@ -92,6 +94,14 @@ nmap({
   -- trouble
   { '<Leader>to', cmd('TroubleToggle'), opts('[T]rouble [O]pen', noremap) },
   { '<Leader>tr', cmd('TroubleRefresh'), opts('[T]rouble [R]efresh', noremap) },
+
+  -- rest
+  { '<Leader>rx', '<Plug>RestNvim', opts('[R]est e[X]ecute', noremap) },
+  { '<Leader>rp', '<Plug>RestNvimPreview', opts('[R]est [P]review', noremap) },
+  { '<Leader>rl', '<Plug>RestNvimLast', opts('[R]est [L]ast', noremap) },
+
+  -- glow
+  { '<Leader>md', cmd('Glow'), opts('[M]ark[D]own render', noremap) },
 })
 
 -- Telescope

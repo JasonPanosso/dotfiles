@@ -127,7 +127,8 @@ function config.mason()
       'codelldb',
       'rust-analyzer',
       'sqlls',
-      'prisma-language-server',
+      'jq',
+      'glow',
     },
     auto_update = true,
   })
