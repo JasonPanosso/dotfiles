@@ -192,8 +192,6 @@ nmap({
   -- LSP Peek
   { '<Leader>pt', cmd('Lspsaga peek_type_definition'), opts('LSP: [P]eek [T]ype definition', noremap) },
   { '<Leader>pd', cmd('Lspsaga peek_definition'), opts('LSP: [P]eek [D]efinition', noremap) },
-
-  -- Diagnostics
   { '<Leader>dl', cmd('Lspsaga show_line_diagnostics'), opts('[D]iagnostics [L]ine', noremap) },
   { '<Leader>db', cmd('Lspsaga show_buf_diagnostics'), opts('[D]iagnostics [B]uffer', noremap) },
   { '<Leader>dw', cmd('Lspsaga show_cursor_diagnostics'), opts('[D]iagnostics [C]ursor', noremap) },
@@ -234,8 +232,8 @@ nmap({
 
 -- DAP
 nmap({
-  { '<Leader>db', cmd('lua require"dap".toggle_breakpoint()'), opts(noremap) },
-  { '<Leader>dB', cmd('lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))'), opts(noremap) },
+  -- { '<Leader>db', cmd('lua require"dap".toggle_breakpoint()'), opts(noremap) },
+  -- { '<Leader>dB', cmd('lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))'), opts(noremap) },
   {
     '<Leader>lp',
     cmd('lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))'),
@@ -251,7 +249,7 @@ nmap({
   { '<Leader>dx', cmd('lua require"dap".terminate()'), opts(noremap) },
   { '<Leader>de', cmd('lua require"dapui".eval()'), opts(noremap) },
 })
---
+
 -- harpoon
 local ui = require('harpoon.ui')
 nmap({

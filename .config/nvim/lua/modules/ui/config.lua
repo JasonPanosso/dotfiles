@@ -159,18 +159,19 @@ function config.lualine()
 end
 
 function config.indent_blankline()
-  require('indent_blankline').setup({
-    char = '│',
-    use_treesitter = true,
-    use_treesitter_scope = false,
-    show_first_indent_level = true,
-    show_current_context = true,
-    filetype_exclude = {
-      'dashboard',
-      'log',
-      'TelescopePrompt',
+  require('ibl').setup({
+    scope = { enabled = false },
+    exclude = {
+      buftypes = {
+
+        'terminal',
+        'nofile',
+        'prompt',
+      },
+      -- 'dashboard',
+      -- 'log',
+      -- 'TelescopePrompt',
     },
-    buftype_exclude = { 'terminal', 'nofile', 'prompt' },
   })
 end
 

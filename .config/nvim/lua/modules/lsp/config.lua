@@ -159,39 +159,88 @@ function config.null_ls()
       }),
 
       -- get ts code actions
-      require('typescript.extensions.null-ls.code-actions'),
+      -- require('typescript.extensions.null-ls.code-actions'),
     },
   })
 end
 
-function config.typescript()
-  require('typescript').setup({
-    disable_commands = false,
-    debug = false,
-    go_to_source_definition = {
-      fallback = true,
-    },
-    single_file_support = false,
-    server = {
-      root_dir = function(fname)
-        return require('lspconfig.util').root_pattern('.git/')(fname)
-          or require('lspconfig.util').root_pattern('tsconfig.json')(fname)
-          or require('lspconfig.util').root_pattern('package.json', 'jsconfig.json')(fname)
-      end,
-      on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-        vim.api.nvim_create_autocmd('InsertLeave', {
-          command = 'w',
-          buffer = bufnr,
-          nested = true,
-        })
-        vim.api.nvim_create_autocmd('TextChanged', {
-          command = 'w',
-          buffer = bufnr,
-          nested = true,
-        })
-      end,
+-- function config.typescript()
+--   require('typescript').setup({
+--     disable_commands = false,
+--     debug = false,
+--     go_to_source_definition = {
+--       fallback = true,
+--     },
+--     single_file_support = false,
+--     server = {
+--       root_dir = function(fname)
+--         return require('lspconfig.util').root_pattern('.git/')(fname)
+--           or require('lspconfig.util').root_pattern('tsconfig.json')(fname)
+--           or require('lspconfig.util').root_pattern('package.json', 'jsconfig.json')(fname)
+--       end,
+--       on_attach = function(client, bufnr)
+--         client.server_capabilities.documentFormattingProvider = false
+--         client.server_capabilities.documentRangeFormattingProvider = false
+--         vim.api.nvim_create_autocmd('InsertLeave', {
+--           command = 'w',
+--           buffer = bufnr,
+--           nested = true,
+--         })
+--         vim.api.nvim_create_autocmd('TextChanged', {
+--           command = 'w',
+--           buffer = bufnr,
+--           nested = true,
+--         })
+--       end,
+--     },
+--   })
+-- end
+
+function config.typescript_tools()
+  require('typescript-tools').setup({
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    on_attach = function(client, bufnr)
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+
+      vim.api.nvim_buf_set_keymap(
+        bufnr,
+        'n',
+        'gd',
+        ':TSToolsGoToSourceDefinition<CR>',
+        { noremap = true, silent = true }
+      )
+
+      vim.api.nvim_create_autocmd('InsertLeave', {
+        command = 'w',
+        buffer = bufnr,
+        nested = true,
+      })
+      vim.api.nvim_create_autocmd('TextChanged', {
+        command = 'w',
+        buffer = bufnr,
+        nested = true,
+      })
+    end,
+
+    settings = {
+      separate_diagnostic_server = true,
+      publish_diagnostic_on = 'insert_leave',
+      expose_as_code_action = 'all',
+      -- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
+      -- memory limit in megabytes or "auto"(basically no limit)
+      tsserver_max_memory = 'auto',
+      tsserver_locale = 'en',
+      -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
+      complete_function_calls = true,
+      include_completions_with_insert_text = true,
+      -- CodeLens
+      -- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
+      -- possible values: ("off"|"all"|"implementations_only"|"references_only")
+      code_lens = 'off',
+      -- by default code lenses are displayed on all referencable values and for some of you it can
+      -- be too much this option reduce count of them by removing member references from lenses
+      disable_member_code_lens = true,
     },
   })
 end

@@ -20,7 +20,7 @@ package({
     'markdown',
     'rust',
     'sql',
-    'prisma'
+    'prisma',
   },
   config = conf.nvim_lsp,
   dependencies = {
@@ -87,9 +87,21 @@ package({
   config = conf.auto_pairs,
 })
 
+-- package({
+--   'jose-elias-alvarez/typescript.nvim',
+--   config = conf.typescript,
+--   ft = {
+--     'typescript',
+--     'typescriptreact',
+--     'typescript.tsx',
+--     'javascript',
+--     'javascriptreact',
+--   },
+-- })
+
 package({
-  'jose-elias-alvarez/typescript.nvim',
-  config = conf.typescript,
+  'pmizio/typescript-tools.nvim',
+  config = conf.typescript_tools,
   ft = {
     'typescript',
     'typescriptreact',

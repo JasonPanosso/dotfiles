@@ -29,6 +29,7 @@ vim.diagnostic.config({
 lspconfig.svelte.setup({
   capabilities = capabilities,
   on_attach = function(_, bufnr)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', ':TSToolsGoToSourceDefinition<CR>', { noremap = true, silent = true })
     vim.api.nvim_create_autocmd('InsertLeave', {
       command = 'w',
       buffer = bufnr,
@@ -111,10 +112,6 @@ lspconfig.eslint.setup({
   capabilities = capabilities,
   format = false,
 })
-
--- lspconfig.sqlls.setup({
---   capabilities = capabilities,
--- })
 
 vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
   local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
