@@ -109,9 +109,9 @@ function config.mason()
       'black',
       'flake8',
       'pyright',
-      'eslint_d',
       'html-lsp',
       'json-lsp',
+      'eslint-lsp',
       'lua-language-server',
       'node-debug2-adapter',
       'prettier',
@@ -122,8 +122,6 @@ function config.mason()
       'marksman',
       'markdownlint',
       'css-lsp',
-      'ansible-lint',
-      'ansible-language-server',
       'codelldb',
       'rust-analyzer',
       'sqlls',
@@ -147,35 +145,6 @@ function config.null_ls()
       -- TS/JS/Svelte formatter/linter
       null_ls.builtins.formatting.prettier.with({
         extra_filetypes = { 'svelte' },
-      }),
-      null_ls.builtins.code_actions.eslint_d,
-      -- null_ls.builtins.formatting.eslint_d.with({
-      --   extra_filetypes = { 'svelte' },
-      --   condition = function(utils)
-      --     local check = utils.root_has_file({
-      --       '.eslintrc',
-      --       '.eslintrc.js',
-      --       '.eslintrc.cjs',
-      --       '.eslintrc.yaml',
-      --       '.eslintrc.yml',
-      --       '.eslintrc.json',
-      --     })
-      --     return check
-      --   end,
-      -- }),
-      null_ls.builtins.diagnostics.eslint_d.with({
-        extra_filetypes = { 'svelte' },
-        condition = function(utils)
-          local check = utils.root_has_file({
-            '.eslintrc',
-            '.eslintrc.js',
-            '.eslintrc.cjs',
-            '.eslintrc.yaml',
-            '.eslintrc.yml',
-            '.eslintrc.json',
-          })
-          return check
-        end,
       }),
       -- Markdown
       null_ls.builtins.diagnostics.markdownlint,
@@ -258,26 +227,5 @@ function config.rust_tools()
     autoSetHints = true,
   })
 end
-
--- function config.metals()
---   local metals_config = require('metals').bare_config()
---   metals_config.settings = {
---     showImplicitArguments = true,
---     excludedPackages = { 'akka.actor.typed.javadsl', 'com.github.swagger.akka.javadsl' },
---   }
---   metals_config.capabilities = require('cmp_nvim_lsp').default_capabilities()
---
---   local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
---   vim.api.nvim_create_autocmd('FileType', {
---     -- NOTE: You may or may not want java included here. You will need it if you
---     -- want basic Java support but it may also conflict if you are using
---     -- something like nvim-jdtls which also works on a java filetype autocmd.
---     pattern = { 'scala', 'sbt', 'java' },
---     callback = function()
---       require('metals').initialize_or_attach(metals_config)
---     end,
---     group = nvim_metals_group,
---   })
--- end
 
 return config

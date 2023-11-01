@@ -107,6 +107,11 @@ lspconfig.prismals.setup({
   capabilities = capabilities,
 })
 
+lspconfig.eslint.setup({
+  capabilities = capabilities,
+  format = false,
+})
+
 -- lspconfig.sqlls.setup({
 --   capabilities = capabilities,
 -- })
