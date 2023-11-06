@@ -62,11 +62,13 @@ end
 function config.lspsaga()
   require('lspsaga').setup({
     rename = {
-      quit = '<esc>',
-      exec = '<CR>',
-      mark = 'a',
-      confirm = '<CR>',
       in_select = false,
+      keys = {
+        quit = '<esc>',
+        exec = '<CR>',
+        mark = 'a',
+        confirm = '<CR>',
+      },
     },
     hover = {
       open_link = '<CR>',
@@ -127,6 +129,9 @@ function config.mason()
       'sqlls',
       'jq',
       'glow',
+      'gopls',
+      'golangci-lint-langserver',
+      'golangci-lint',
     },
     auto_update = true,
   })
@@ -164,52 +169,22 @@ function config.null_ls()
   })
 end
 
--- function config.typescript()
---   require('typescript').setup({
---     disable_commands = false,
---     debug = false,
---     go_to_source_definition = {
---       fallback = true,
---     },
---     single_file_support = false,
---     server = {
---       root_dir = function(fname)
---         return require('lspconfig.util').root_pattern('.git/')(fname)
---           or require('lspconfig.util').root_pattern('tsconfig.json')(fname)
---           or require('lspconfig.util').root_pattern('package.json', 'jsconfig.json')(fname)
---       end,
---       on_attach = function(client, bufnr)
---         client.server_capabilities.documentFormattingProvider = false
---         client.server_capabilities.documentRangeFormattingProvider = false
---         vim.api.nvim_create_autocmd('InsertLeave', {
---           command = 'w',
---           buffer = bufnr,
---           nested = true,
---         })
---         vim.api.nvim_create_autocmd('TextChanged', {
---           command = 'w',
---           buffer = bufnr,
---           nested = true,
---         })
---       end,
---     },
---   })
--- end
-
 function config.typescript_tools()
   require('typescript-tools').setup({
+    filetypes = {
+      'javascript',
+      'javascriptreact',
+      'javascript.jsx',
+      'typescript',
+      'typescriptreact',
+      'typescript.tsx',
+      'vue',
+      'astro',
+    },
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
     on_attach = function(client, bufnr)
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
-
-      vim.api.nvim_buf_set_keymap(
-        bufnr,
-        'n',
-        'gd',
-        ':TSToolsGoToSourceDefinition<CR>',
-        { noremap = true, silent = true }
-      )
 
       vim.api.nvim_create_autocmd('InsertLeave', {
         command = 'w',
@@ -274,6 +249,30 @@ function config.rust_tools()
       end,
     },
     autoSetHints = true,
+  })
+end
+
+function config.actions_preview()
+  require('actions-preview').setup({
+    diff = {
+      algorithm = 'patience',
+      ignore_whitespace = true,
+    },
+
+    telescope = {
+      sorting_strategy = 'ascending',
+      initial_mode = 'normal',
+      layout_strategy = 'vertical',
+      layout_config = {
+        width = 0.8,
+        height = 0.9,
+        prompt_position = 'top',
+        preview_cutoff = 20,
+        preview_height = function(_, _, max_lines)
+          return max_lines - 15
+        end,
+      },
+    },
   })
 end
 

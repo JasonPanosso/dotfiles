@@ -42,5 +42,6 @@ package({
     'nvim-telescope/telescope-file-browser.nvim',
     'xiyaowong/telescope-emoji.nvim',
     'ahmedkhalf/project.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
   },
 })

@@ -118,8 +118,8 @@ package({
   ft = 'rust',
 })
 
--- package({
---   'scalameta/nvim-metals',
---   config = conf.metals,
---   dependencies = { 'nvim-lua/plenary.nvim' },
--- })
+package({
+  'aznhe21/actions-preview.nvim',
+  event = 'LspAttach',
+  config = conf.actions_preview,
+})

@@ -24,6 +24,7 @@ end
 function config.telescope()
   local fb_actions = require('telescope').extensions.file_browser.actions
   local actions = require('telescope.actions')
+
   require('telescope').setup({
     defaults = {
       path_display = { 'smart' },
@@ -41,13 +42,23 @@ function config.telescope()
       prompt_prefix = ' ',
       selection_caret = ' ',
       layout_config = {
-        horizontal = { prompt_position = 'bottom', results_width = 0.6 },
+        horizontal = { prompt_position = 'bottom', preview_width = 0.5, results_width = 0.5 },
         vertical = { mirror = false },
       },
       sorting_strategy = 'ascending',
       file_previewer = require('telescope.previewers').vim_buffer_cat.new,
       grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
       qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+      vimgrep_arguments = {
+        'rg',
+        '--color=never',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--smart-case',
+        '--trim',
+      },
     },
     extensions = {
       fzy_native = {
@@ -67,17 +78,22 @@ function config.telescope()
       },
     },
   })
+
   require('telescope').load_extension('fzy_native')
   require('telescope').load_extension('file_browser')
   require('telescope').load_extension('projects')
   require('telescope').load_extension('emoji')
+  require('telescope').load_extension('ui-select')
 end
 
 function config.nvim_treesitter()
   vim.api.nvim_command('set foldmethod=expr')
   vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
 
+  -- known LuaLS bug https://github.com/nvim-treesitter/nvim-treesitter/issues/5297
+  ---@diagnostic disable: missing-fields
   require('nvim-treesitter.configs').setup({
+    sync_install = true,
     ensure_installed = 'all',
     auto_install = true,
     ignore_install = { 'phpdoc', 'sql' },
@@ -95,6 +111,8 @@ function config.nvim_treesitter()
           ['if'] = '@function.inner',
           ['ac'] = '@class.outer',
           ['ic'] = '@class.inner',
+          ['ia'] = '@parameter.inner',
+          ['aa'] = '@parameter.outer',
         },
       },
     },
@@ -106,6 +124,9 @@ function config.nvim_treesitter()
 
   -- postgresql parser
   local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+
+  -- this is the recommended way to do it, idk why LuaLS mad
+  ---@diagnostic disable: inject-field
   parser_config.postgres = {
     install_info = {
       url = '$HOME/Projects/tree-sitter-sql', -- local path or git repo
