@@ -224,7 +224,11 @@ nmap({
 
   -- Diagnostics
   { '<Leader>dl', cmd('Lspsaga show_line_diagnostics'), opts('[D]iagnostics [L]ine', noremap) },
-  { '<Leader>db', cmd('lua require("telescope.builtin").diagnostics()'), opts('[D]iagnostics [B]uffers', noremap) },
+  {
+    '<Leader>db',
+    cmd('lua require("telescope.builtin").diagnostics({bufnr=0})'),
+    opts('[D]iagnostics [B]uffers', noremap),
+  },
   { '<Leader>dc', cmd('Lspsaga show_cursor_diagnostics'), opts('[D]iagnostics [C]ursor', noremap) },
   { '[e', cmd('Lspsaga diagnostic_jump_prev'), opts('Diagnostics: Jump prev', noremap) },
   { ']e', cmd('Lspsaga diagnostic_jump_next'), opts('Diagnostics: Jump next', noremap) },
