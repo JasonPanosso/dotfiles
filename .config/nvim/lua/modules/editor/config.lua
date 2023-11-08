@@ -22,7 +22,6 @@ function config.lua_snip()
 end
 
 function config.telescope()
-  local fb_actions = require('telescope').extensions.file_browser.actions
   local actions = require('telescope.actions')
 
   require('telescope').setup({
@@ -65,24 +64,11 @@ function config.telescope()
         override_generic_sorter = false,
         override_file_sorter = true,
       },
-      file_browser = {
-        mappings = {
-          ['n'] = {
-            ['c'] = fb_actions.create,
-            ['r'] = fb_actions.rename,
-            ['d'] = fb_actions.remove,
-            ['o'] = fb_actions.open,
-            ['u'] = fb_actions.goto_parent_dir,
-          },
-        },
-      },
     },
   })
 
   require('telescope').load_extension('fzy_native')
-  require('telescope').load_extension('file_browser')
   require('telescope').load_extension('projects')
-  require('telescope').load_extension('emoji')
 end
 
 function config.nvim_treesitter()
@@ -99,9 +85,6 @@ function config.nvim_treesitter()
     highlight = {
       enable = true,
     },
-    context_commentstring = {
-      enable = true,
-    },
     textobjects = {
       select = {
         enable = true,
@@ -115,11 +98,9 @@ function config.nvim_treesitter()
         },
       },
     },
-    -- ts autotag
-    autotag = {
-      enable = true,
-    },
   })
+  require('ts_context_commentstring').setup({})
+  require('nvim-ts-autotag').setup({})
 
   -- postgresql parser
   local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
@@ -144,6 +125,88 @@ function config.nvim_treesitter()
     callback = function(opt)
       vim.bo[opt.buf].indentexpr = 'nvim_treesitter#indent()'
     end,
+  })
+end
+
+function config.formatter()
+  local util = require('formatter.util')
+
+  ---@diagnostic disable: undefined-field why?
+  require('formatter').setup({
+    filetype = {
+      lua = {
+        require('formatter.filetypes.lua').stylua,
+      },
+      svelte = {
+        require('formatter.filetypes.svelte').prettier,
+      },
+      typescript = {
+        function()
+          -- this is janky, need a recursive search or something.. zz
+          if vim.fn.filereadable(util.get_cwd() .. '/dprint.json') == 1 then
+            return {
+              exe = 'dprint',
+              args = { 'fmt', '--stdin', util.escape_path(util.get_current_buffer_file_path()) },
+              stdin = true,
+            }
+          else
+            return {
+              exe = 'prettierd',
+              args = { util.escape_path(util.get_current_buffer_file_path()) },
+              stdin = true,
+            }
+          end
+        end,
+      },
+      javascript = {
+        require('formatter.filetypes.javascript').prettierd,
+      },
+      typescriptreact = {
+        require('formatter.filetypes.typescriptreact').prettierd,
+      },
+      javascriptreact = {
+        require('formatter.filetypes.javascriptreact').prettierd,
+      },
+      markdown = {
+        require('formatter.filetypes.markdown').prettierd,
+      },
+      json = {
+        require('formatter.filetypes.json').prettierd,
+      },
+      css = {
+        require('formatter.filetypes.css').prettierd,
+      },
+      sql = {
+        function()
+          return {
+            exe = 'sqlfluff',
+            args = { 'fix', '--disable-progress-bar', '-f', '-n', '--dialect postgres', '-' },
+            stdin = true,
+          }
+        end,
+      },
+      python = {
+        require('formatter.filetypes.python').black,
+      },
+      go = {
+        require('formatter.filetypes.go').gofmt,
+      },
+      rust = {
+        require('formatter.filetypes.rust').rustfmt,
+      },
+      html = {
+        require('formatter.filetypes.html').prettierd,
+      },
+      sh = {
+        require('formatter.filetypes.sh').shfmt,
+      },
+      yaml = {
+        require('formatter.filetypes.yaml').prettierd,
+      },
+      ['*'] = {
+        require('formatter.filetypes.any').remove_trailing_whitespace,
+      },
+    },
   })
 end
 

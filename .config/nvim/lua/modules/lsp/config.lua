@@ -117,6 +117,7 @@ function config.mason()
       'lua-language-server',
       'node-debug2-adapter',
       'prettier',
+      'prettierd',
       'stylua',
       'svelte-language-server',
       'tailwindcss-language-server',
@@ -126,12 +127,13 @@ function config.mason()
       'css-lsp',
       'codelldb',
       'rust-analyzer',
-      'sqlls',
       'jq',
       'glow',
       'gopls',
       'golangci-lint-langserver',
       'golangci-lint',
+      'shfmt',
+      'sqlfluff',
     },
     auto_update = true,
   })
@@ -142,41 +144,11 @@ function config.null_ls()
   local null_ls = require('null-ls')
   null_ls.setup({
     sources = {
-      -- Python formatter/linter
-      null_ls.builtins.formatting.black,
       null_ls.builtins.diagnostics.flake8,
-      --Lua formatter
-      null_ls.builtins.formatting.stylua,
-      -- TS/JS/Svelte formatter/linter
-      -- null_ls.builtins.formatting.prettier.with({
-      --   extra_filetypes = { 'svelte' },
-      -- }),
-      null_ls.builtins.formatting.dprint.with({
-        filetypes = {
-          'javascript',
-          'javascriptreact',
-          'typescript',
-          'typescriptreact',
-          'json',
-          'markdown',
-          'toml',
-          'svelte',
-        },
-      }),
-      -- Markdown
       null_ls.builtins.diagnostics.markdownlint,
-
-      -- Postgresql
-      null_ls.builtins.formatting.sqlfluff.with({
-        extra_args = { '--dialect', 'postgres' }, -- change to your dialect
-      }),
-
       null_ls.builtins.diagnostics.sqlfluff.with({
         extra_args = { '--dialect', 'postgres' }, -- change to your dialect
       }),
-
-      -- get ts code actions
-      -- require('typescript.extensions.null-ls.code-actions'),
     },
   })
 end

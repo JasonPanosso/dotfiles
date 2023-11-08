@@ -21,6 +21,10 @@ package({
   config = function()
     require('Comment').setup()
   end,
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter',
+    'JoosepAlviste/nvim-ts-context-commentstring',
+  },
 })
 
 package({
@@ -39,9 +43,12 @@ package({
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-fzy-native.nvim',
-    'nvim-telescope/telescope-file-browser.nvim',
-    'xiyaowong/telescope-emoji.nvim',
     'ahmedkhalf/project.nvim',
-    'nvim-telescope/telescope-ui-select.nvim',
   },
+})
+
+package({
+  'mhartington/formatter.nvim',
+  config = conf.formatter,
+  event = 'BufRead',
 })

@@ -3,8 +3,6 @@ local conf = require('modules.lsp.config')
 
 package({
   'neovim/nvim-lspconfig',
-  -- used filetype to lazyload lsp
-  -- config your language filetype in here
   ft = {
     'lua',
     'html',
@@ -21,6 +19,7 @@ package({
     'rust',
     'sql',
     'prisma',
+    'go',
   },
   config = conf.nvim_lsp,
   dependencies = {
@@ -96,6 +95,7 @@ package({
     'typescript.tsx',
     'javascript',
     'javascriptreact',
+    'svelte',
   },
 })
 

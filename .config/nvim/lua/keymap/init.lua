@@ -41,7 +41,7 @@ nmap({
   { 'L', 'g_', opts(noremap) },
 
   -- async format
-  { '<Leader>lf', cmdredraw('lua vim.lsp.buf.format{ async = true }'), opts('[L]sp [F]ormat', noremap) },
+  { '<Leader>lf', cmdredraw('FormatWrite'), opts('[L]sp [F]ormat', noremap) },
 
   -- page up/down
   { '<C-d>', '<C-d>zz', opts(noremap) },
