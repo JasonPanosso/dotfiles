@@ -83,7 +83,6 @@ function config.telescope()
   require('telescope').load_extension('file_browser')
   require('telescope').load_extension('projects')
   require('telescope').load_extension('emoji')
-  require('telescope').load_extension('ui-select')
 end
 
 function config.nvim_treesitter()

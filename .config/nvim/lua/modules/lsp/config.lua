@@ -148,8 +148,20 @@ function config.null_ls()
       --Lua formatter
       null_ls.builtins.formatting.stylua,
       -- TS/JS/Svelte formatter/linter
-      null_ls.builtins.formatting.prettier.with({
-        extra_filetypes = { 'svelte' },
+      -- null_ls.builtins.formatting.prettier.with({
+      --   extra_filetypes = { 'svelte' },
+      -- }),
+      null_ls.builtins.formatting.dprint.with({
+        filetypes = {
+          'javascript',
+          'javascriptreact',
+          'typescript',
+          'typescriptreact',
+          'json',
+          'markdown',
+          'toml',
+          'svelte',
+        },
       }),
       -- Markdown
       null_ls.builtins.diagnostics.markdownlint,
