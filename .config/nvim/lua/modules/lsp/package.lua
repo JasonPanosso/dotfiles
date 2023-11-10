@@ -18,12 +18,10 @@ package({
     'markdown',
     'rust',
     'sql',
-    'prisma',
     'go',
   },
   config = conf.nvim_lsp,
   dependencies = {
-    'jose-elias-alvarez/null-ls.nvim',
     'glepnir/lspsaga.nvim',
   },
 })
@@ -47,14 +45,14 @@ package({
   },
 })
 
-package({
-  'jose-elias-alvarez/null-ls.nvim',
-  config = conf.null_ls,
-  event = { 'BufRead', 'BufNewFile' },
-  dependencies = {
-    { 'neovim/nvim-lspconfig' },
-  },
-})
+-- package({
+--   'jose-elias-alvarez/null-ls.nvim',
+--   config = conf.null_ls,
+--   event = { 'BufRead', 'BufNewFile' },
+--   dependencies = {
+--     { 'neovim/nvim-lspconfig' },
+--   },
+-- })
 
 package({
   'glepnir/lspsaga.nvim',
@@ -110,4 +108,11 @@ package({
   'aznhe21/actions-preview.nvim',
   event = 'LspAttach',
   config = conf.actions_preview,
+})
+
+package({
+  'mfussenegger/nvim-lint',
+  event = { 'BufRead', 'BufNewFile' },
+  config = conf.lint,
+  dependencies = { 'williamboman/mason.nvim' },
 })

@@ -42,7 +42,7 @@ function config.nvim_cmp()
     },
   })
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-  cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+  cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 end
 
 function config.auto_pairs()
@@ -56,6 +56,7 @@ function config.auto_pairs()
       javascriptreact = { 'template_string' },
       svelte = { 'template_string' },
     },
+    enable_check_bracket_line = true, -- ?,
   })
 end
 
@@ -74,12 +75,6 @@ function config.lspsaga()
       open_link = '<CR>',
       open_browser = '!firefox',
     },
-    -- This breaks shit. Why? I can bind two keys to things like code_action quit and definition quit, but outline will give me an error. ROFL.
-    -- outline = {
-    --   keys = {
-    --     quit = { '<esc>', 'q' },
-    --   },
-    -- },
     symbol_in_winbar = {
       enable = true,
       separator = ' ',
@@ -108,6 +103,7 @@ function config.mason()
   require('mason-tool-installer').setup({
     ensure_installed = {
       'bash-language-server',
+      'codelldb',
       'black',
       'flake8',
       'pyright',
@@ -130,26 +126,38 @@ function config.mason()
       'jq',
       'glow',
       'gopls',
-      'golangci-lint-langserver',
       'golangci-lint',
+      'golangci-lint-langserver',
       'shfmt',
       'sqlfluff',
+      'dprint',
+      'selene',
     },
     auto_update = true,
   })
   require('mason-lspconfig').setup()
 end
 
-function config.null_ls()
-  local null_ls = require('null-ls')
-  null_ls.setup({
-    sources = {
-      null_ls.builtins.diagnostics.flake8,
-      null_ls.builtins.diagnostics.markdownlint,
-      null_ls.builtins.diagnostics.sqlfluff.with({
-        extra_args = { '--dialect', 'postgres' }, -- change to your dialect
-      }),
-    },
+function config.lint()
+  local sqlfluff = require('lint').linters.sqlfluff
+
+  sqlfluff.args = {
+    'lint',
+    '--format=json',
+    '--dialect=postgres',
+  }
+
+  require('lint').linters_by_ft = {
+    markdown = { 'markdownlint' },
+    python = { 'flake8' },
+    lua = { 'selene' },
+    sql = { 'sqlfluff' },
+  }
+
+  vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+    callback = function()
+      require('lint').try_lint()
+    end,
   })
 end
 
@@ -162,6 +170,7 @@ function config.typescript_tools()
       'typescript',
       'typescriptreact',
       'typescript.tsx',
+      'svelte',
       'vue',
       'astro',
     },
@@ -186,19 +195,11 @@ function config.typescript_tools()
       separate_diagnostic_server = true,
       publish_diagnostic_on = 'insert_leave',
       expose_as_code_action = 'all',
-      -- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
-      -- memory limit in megabytes or "auto"(basically no limit)
       tsserver_max_memory = 'auto',
       tsserver_locale = 'en',
-      -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
       complete_function_calls = true,
       include_completions_with_insert_text = true,
-      -- CodeLens
-      -- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
-      -- possible values: ("off"|"all"|"implementations_only"|"references_only")
       code_lens = 'off',
-      -- by default code lenses are displayed on all referencable values and for some of you it can
-      -- be too much this option reduce count of them by removing member references from lenses
       disable_member_code_lens = true,
     },
   })

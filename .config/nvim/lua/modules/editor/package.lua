@@ -9,10 +9,13 @@ package({
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'windwp/nvim-ts-autotag',
-    'tpope/vim-sleuth',
     'JoosepAlviste/nvim-ts-context-commentstring',
-    'numToStr/Comment.nvim',
   },
+})
+
+package({
+  'tpope/vim-sleuth',
+  event = { 'BufRead', 'BufNewFile' },
 })
 
 package({

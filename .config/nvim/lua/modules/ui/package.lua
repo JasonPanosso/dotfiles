@@ -1,13 +1,14 @@
 local package = require('core.pack').package
 local conf = require('modules.ui.config')
 
-package({ 'rebelot/kanagawa.nvim', config = conf.kanagawa })
+package({ 'rebelot/kanagawa.nvim', lazy = false, config = conf.kanagawa })
 
-package({ 'goolord/alpha-nvim', config = conf.alpha })
+package({ 'goolord/alpha-nvim', lazy = false, config = conf.alpha })
 
 package({
   'nvim-lualine/lualine.nvim',
   config = conf.lualine,
+  lazy = false,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
 
@@ -25,5 +26,6 @@ package({
 
 package({
   'stevearc/oil.nvim',
+  lazy = false,
   config = conf.oil,
 })

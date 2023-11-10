@@ -101,15 +101,6 @@ nmap({
   -- LazyGit
   { '<Leader>go', cmd('LazyGit'), opts('[G]it [O]pen', noremap) },
 
-  -- diffview
-  { '<Leader>dvo', cmd('DiffviewOpen'), opts('[D]iff[V]iew [O]pen', noremap) },
-  { '<Leader>dvc', cmd('DiffviewClose'), opts('[D]iff[V]iew [C]lose', noremap) },
-  { '<Leader>dvfh', cmd('DiffviewFileHistory %'), opts('[D]iff[V]iew [F]ile [H]istory', noremap) },
-
-  -- trouble
-  { '<Leader>to', cmd('TroubleToggle'), opts('[T]rouble [O]pen', noremap) },
-  { '<Leader>tr', cmd('TroubleRefresh'), opts('[T]rouble [R]efresh', noremap) },
-
   -- rest
   { '<Leader>rx', '<Plug>RestNvim', opts('[R]est e[X]ecute', noremap) },
   { '<Leader>rp', '<Plug>RestNvimPreview', opts('[R]est [P]review', noremap) },
@@ -117,6 +108,16 @@ nmap({
 
   -- glow
   { '<Leader>md', cmd('Glow'), opts('[M]ark[D]own render', noremap) },
+
+  -- neotest
+  { '<Leader>tr', cmd('lua require("neotest").run.run()'), opts('[T]est [R]un', noremap) },
+  { '<Leader>tf', cmd('lua require("neotest").run.run(vim.fn.expand("%"))'), opts('[T]est [F]ile', noremap) },
+  { '<Leader>td', cmd('lua require("neotest").run.run({strategy = "dap"})'), opts('[T]est [D]ebug', noremap) },
+  { '<Leader>tw', cmd('lua require("neotest").run.run(vim.fn.getcwd())'), opts('[T]est [W]orkspace', noremap) },
+  { '<Leader>tx', cmd('lua require("neotest").run.stop()'), opts('[T]est [X]', noremap) },
+  { '<Leader>to', cmd('lua require("neotest").summary.toggle()'), opts('[T]est [O]pen', noremap) },
+  { '<Leader>ta', cmd('lua require("neotest").run.attach()'), opts('[T]est [A]ttach', noremap) },
+  { '<Leader>tl', cmd('lua require("neotest").run.run_last()'), opts('[T]est [L]ast', noremap) },
 })
 
 -- Telescope
@@ -172,11 +173,6 @@ nmap({
     opts(noremap, '[?] Find recently opened files'),
   },
   {
-    '<Leader>se',
-    cmd('Telescope emoji'),
-    opts(noremap, '[S]earch [E]moji'),
-  },
-  {
     '<Leader>sc',
     cmd('Telescope dap commands'),
     opts(noremap, '[S]earch DAP [C]ommands'),
@@ -204,7 +200,7 @@ nmap({
   { 'gr', cmd('lua require("telescope.builtin").lsp_references()'), opts('LSP: [G]oto [R]eferences', noremap) },
   {
     'gt',
-    cmd('lua require("telescope.builtin").lsp_type_definitions()'),
+    cmd('Lspsaga goto_type_definition'),
     opts('LSP: [G]oto [T]ype definition', noremap),
   },
   {
@@ -229,6 +225,11 @@ nmap({
     cmd('lua require("telescope.builtin").diagnostics({bufnr=0})'),
     opts('[D]iagnostics [B]uffers', noremap),
   },
+  {
+    '<Leader>dw',
+    cmd('lua require("telescope.builtin").diagnostics()'),
+    opts('[D]iagnostics [W]orkspace', noremap),
+  },
   { '<Leader>dc', cmd('Lspsaga show_cursor_diagnostics'), opts('[D]iagnostics [C]ursor', noremap) },
   { '[e', cmd('Lspsaga diagnostic_jump_prev'), opts('Diagnostics: Jump prev', noremap) },
   { ']e', cmd('Lspsaga diagnostic_jump_next'), opts('Diagnostics: Jump next', noremap) },
@@ -238,7 +239,7 @@ nmap({
   { '<Leader>K', cmd('Lspsaga hover_doc ++keep'), opts('LSP: Keep Hover Documentation', noremap) },
   { '<Leader>k', vim.lsp.buf.signature_help, opts('LSP: Signature Help', noremap) },
 
-  -- LSPInfo
+  -- LSP
   {
     '<Leader>li',
     cmd('LspInfo'),

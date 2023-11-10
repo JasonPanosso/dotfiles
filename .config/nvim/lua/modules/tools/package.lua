@@ -40,12 +40,6 @@ package({
 })
 
 package({
-  'sindrets/diffview.nvim',
-  event = { 'BufRead', 'BufNewFile' },
-  config = conf.diffview,
-})
-
-package({
   'MunifTanjim/nui.nvim',
   lazy = false,
 })
@@ -56,12 +50,6 @@ package({
 })
 
 package({
-  'folke/trouble.nvim',
-  event = { 'BufRead', 'BufNewFile' },
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-})
-
-package({
   'rest-nvim/rest.nvim',
   event = { 'BufRead', 'BufNewFile' },
   dependencies = { 'nvim-lua/plenary.nvim' },
@@ -69,3 +57,18 @@ package({
 })
 
 package({ 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' })
+
+package({
+  'nvim-neotest/neotest',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'antoinemadec/FixCursorHold.nvim',
+    'marilari88/neotest-vitest',
+    -- 'nvim-neotest/neotest-jest',
+    'rouge8/neotest-rust',
+    'thenbe/neotest-playwright',
+    'nvim-neotest/neotest-go',
+  },
+  config = conf.neotest,
+  event = { 'BufRead', 'BufNewFile' },
+})
