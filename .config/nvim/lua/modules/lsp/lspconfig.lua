@@ -3,6 +3,20 @@ local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+local lsp_border = {
+  { '╭', 'NormalFloat' },
+  { '─', 'NormalFloat' },
+  { '╮', 'NormalFloat' },
+  { '│', 'NormalFloat' },
+  { '╯', 'NormalFloat' },
+  { '─', 'NormalFloat' },
+  { '╰', 'NormalFloat' },
+  { '│', 'NormalFloat' },
+}
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = lsp_border })
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = lsp_border })
+
 local signs = {
   Error = ' ',
   Warn = ' ',
@@ -15,6 +29,7 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({
+  float = { border = lsp_border },
   signs = true,
   update_in_insert = false,
   underline = true,
@@ -41,34 +56,38 @@ lspconfig.svelte.setup({
   end,
 })
 
-lspconfig.lua_ls.setup({
+lspconfig.luau_lsp.setup({
   capabilities = capabilities,
-  settings = {
-    Lua = {
-      format = {
-        enable = false,
-      },
-      diagnostics = {
-        enable = true,
-        globals = { 'vim' },
-      },
-      runtime = { version = 'LuaJIT' },
-      workspace = {
-        library = (function()
-          local lib = {}
-          for _, path in ipairs(vim.api.nvim_get_runtime_file('lua', true)) do
-            lib[#lib + 1] = path:sub(1, -5)
-          end
-          return lib
-        end)(),
-        checkThirdParty = false,
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
 })
+
+-- lspconfig.lua_ls.setup({
+--   capabilities = capabilities,
+--   settings = {
+--     Lua = {
+--       format = {
+--         enable = false,
+--       },
+--       diagnostics = {
+--         enable = true,
+--         globals = { 'vim' },
+--       },
+--       runtime = { version = 'LuaJIT' },
+--       workspace = {
+--         library = (function()
+--           local lib = {}
+--           for _, path in ipairs(vim.api.nvim_get_runtime_file('lua', true)) do
+--             lib[#lib + 1] = path:sub(1, -5)
+--           end
+--           return lib
+--         end)(),
+--         checkThirdParty = false,
+--       },
+--       telemetry = {
+--         enable = false,
+--       },
+--     },
+--   },
+-- })
 
 lspconfig.pyright.setup({
   capabilities = capabilities,

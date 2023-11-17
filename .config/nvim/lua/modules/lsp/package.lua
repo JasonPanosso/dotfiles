@@ -22,6 +22,7 @@ package({
   },
   config = conf.nvim_lsp,
   dependencies = {
+    'folke/neodev.nvim',
     'glepnir/lspsaga.nvim',
   },
 })
@@ -115,4 +116,10 @@ package({
   event = { 'BufRead', 'BufNewFile' },
   config = conf.lint,
   dependencies = { 'williamboman/mason.nvim' },
+})
+
+package({
+  'lopi-py/luau-lsp.nvim',
+  event = { 'BufRead', 'BufNewFile' },
+  config = conf.luau,
 })

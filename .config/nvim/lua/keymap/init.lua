@@ -196,7 +196,7 @@ nmap({
 
   -- LSP Goto
   { 'gh', cmd('Lspsaga lsp_finder'), opts('LSP: Symbol Info', noremap) },
-  { 'gr', cmd('Lspsaga goto_definition'), opts('LSP: [G]oto [D]efinition', noremap) },
+  { 'gd', cmd('Lspsaga goto_definition'), opts('LSP: [G]oto [D]efinition', noremap) },
   { 'gr', cmd('lua require("telescope.builtin").lsp_references()'), opts('LSP: [G]oto [R]eferences', noremap) },
   {
     'gt',
@@ -220,6 +220,15 @@ nmap({
 
   -- Diagnostics
   { '<Leader>dl', cmd('Lspsaga show_line_diagnostics'), opts('[D]iagnostics [L]ine', noremap) },
+  -- { '<Leader>dl', vim.diagnostic.open_float, opts('[D]iagnostics [L]ine', noremap) },
+  { '<Leader>rt', cmd('lua require("modules.diag"):show_diagnostics({ line = true })'), opts(noremap) },
+  -- {
+  --   '<Leader>rt',
+  --   cmd(
+  --     'lua vim.lsp.util.open_floating_preview({"## `hello`", "```typescript", "Your type `Dinger` type Dinger = Baba Booey","```" }, "markdown")'
+  --   ),
+  --   opts(noremap),
+  -- },
   {
     '<Leader>db',
     cmd('lua require("telescope.builtin").diagnostics({bufnr=0})'),
@@ -235,7 +244,11 @@ nmap({
   { ']e', cmd('Lspsaga diagnostic_jump_next'), opts('Diagnostics: Jump next', noremap) },
 
   -- Documentation
-  { 'K', cmd('Lspsaga hover_doc'), opts('LSP: Hover Documentation', noremap) },
+  {
+    'K',
+    vim.lsp.buf.hover,
+    opts('LSP: Hover Documentation', noremap, silent),
+  },
   { '<Leader>K', cmd('Lspsaga hover_doc ++keep'), opts('LSP: Keep Hover Documentation', noremap) },
   { '<Leader>k', vim.lsp.buf.signature_help, opts('LSP: Signature Help', noremap) },
 

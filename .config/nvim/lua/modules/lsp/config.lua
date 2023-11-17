@@ -135,6 +135,17 @@ function config.mason()
     },
     auto_update = true,
   })
+
+  require('mason-lspconfig').setup_handlers({
+    luau_lsp = function()
+      require('luau-lsp').setup({
+        server = { -- options passed to `require("lspconfig").luau_lsp.setup`
+          filetypes = { 'lua', 'luau' }, -- default is { "luau" }
+        },
+      })
+    end,
+  })
+  
   require('mason-lspconfig').setup()
 end
 
@@ -190,6 +201,25 @@ function config.typescript_tools()
         nested = true,
       })
     end,
+    -- handlers = {
+    --   ['textDocument/publishDiagnostics'] = function(_, result, ctx, conf)
+    --     if result.diagnostics == nil then
+    --       return
+    --     end
+    --
+    --     local idx = 1
+    --     while idx <= #result.diagnostics do
+    --       local entry = result.diagnostics[idx]
+    --
+    --       local formatter = require('modules.lsp.test')[entry.code]
+    --       entry.message = formatter and formatter(entry.message) or entry.message
+    --
+    --       idx = idx + 1
+    --     end
+    --
+    --     vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, conf)
+    --   end,
+    -- },
 
     settings = {
       separate_diagnostic_server = true,
@@ -259,6 +289,17 @@ function config.actions_preview()
       },
     },
   })
+end
+
+function config.luau()
+require('luau-lsp').setup({
+   sourcemap = {
+     enable = true, -- enable sourcemap generation
+   },
+  types = {
+    roblox = true, -- enable roblox api
+  },
+})
 end
 
 return config

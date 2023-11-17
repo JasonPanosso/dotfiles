@@ -72,6 +72,7 @@ function config.telescope()
 end
 
 function config.nvim_treesitter()
+  require('luau-lsp').treesitter()
   vim.api.nvim_command('set foldmethod=expr')
   vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
 
@@ -169,6 +170,9 @@ function config.formatter()
         require('formatter.filetypes.markdown').prettierd,
       },
       json = {
+        require('formatter.filetypes.json').prettierd,
+      },
+      jsonc = {
         require('formatter.filetypes.json').prettierd,
       },
       css = {
