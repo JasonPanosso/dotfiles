@@ -10,6 +10,7 @@ package({
     'nvim-treesitter/nvim-treesitter-textobjects',
     'windwp/nvim-ts-autotag',
     'JoosepAlviste/nvim-ts-context-commentstring',
+    'lopi-py/luau-lsp.nvim',
   },
 })
 

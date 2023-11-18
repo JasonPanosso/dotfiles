@@ -135,17 +135,39 @@ function config.mason()
     },
     auto_update = true,
   })
-
   require('mason-lspconfig').setup_handlers({
     luau_lsp = function()
       require('luau-lsp').setup({
+        sourcemap = { enabled = true, autogenerate = true },
+        types = { roblox = true },
+
         server = { -- options passed to `require("lspconfig").luau_lsp.setup`
           filetypes = { 'lua', 'luau' }, -- default is { "luau" }
+          settings = {
+            ['luau-lsp'] = {
+              require = {
+                mode = 'relativeToFile',
+              },
+              completion = {
+                autocompleteEnd = true,
+                addParentheses = true,
+                imports = {
+                  enabled = true,
+                  suggestServices = true,
+                  suggestRequires = true,
+                  separateGroupsWithLine = true,
+                },
+              },
+              ignoreGlobs = {
+                '**/_Index/**',
+              },
+            },
+          },
         },
       })
     end,
   })
-  
+
   require('mason-lspconfig').setup()
 end
 
@@ -289,17 +311,6 @@ function config.actions_preview()
       },
     },
   })
-end
-
-function config.luau()
-require('luau-lsp').setup({
-   sourcemap = {
-     enable = true, -- enable sourcemap generation
-   },
-  types = {
-    roblox = true, -- enable roblox api
-  },
-})
 end
 
 return config

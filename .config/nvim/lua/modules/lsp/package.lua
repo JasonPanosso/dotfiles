@@ -43,6 +43,7 @@ package({
   dependencies = {
     { 'williamboman/mason-lspconfig.nvim' },
     { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
+    { 'lopi-py/luau-lsp.nvim' },
   },
 })
 
@@ -116,10 +117,4 @@ package({
   event = { 'BufRead', 'BufNewFile' },
   config = conf.lint,
   dependencies = { 'williamboman/mason.nvim' },
-})
-
-package({
-  'lopi-py/luau-lsp.nvim',
-  event = { 'BufRead', 'BufNewFile' },
-  config = conf.luau,
 })

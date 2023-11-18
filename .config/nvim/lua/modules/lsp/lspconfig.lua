@@ -56,10 +56,6 @@ lspconfig.svelte.setup({
   end,
 })
 
-lspconfig.luau_lsp.setup({
-  capabilities = capabilities,
-})
-
 -- lspconfig.lua_ls.setup({
 --   capabilities = capabilities,
 --   settings = {
