@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local lspUtils = require('modules/lsp/lsputils')
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -23,6 +24,7 @@ local signs = {
   Info = ' ',
   Hint = ' ',
 }
+
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -56,34 +58,69 @@ lspconfig.svelte.setup({
   end,
 })
 
--- lspconfig.lua_ls.setup({
---   capabilities = capabilities,
---   settings = {
---     Lua = {
---       format = {
---         enable = false,
---       },
---       diagnostics = {
---         enable = true,
---         globals = { 'vim' },
---       },
---       runtime = { version = 'LuaJIT' },
---       workspace = {
---         library = (function()
---           local lib = {}
---           for _, path in ipairs(vim.api.nvim_get_runtime_file('lua', true)) do
---             lib[#lib + 1] = path:sub(1, -5)
---           end
---           return lib
---         end)(),
---         checkThirdParty = false,
---       },
---       telemetry = {
---         enable = false,
---       },
---     },
---   },
--- })
+if lspUtils.dir_is_luau() then
+  require('plenary.filetype').add_file('luau')
+  vim.filetype.add({ extension = { luau = 'luau', lua = 'luau' } })
+
+  require('luau-lsp').setup({
+    sourcemap = {
+      enabled = false,
+    },
+    types = {
+      roblox = false,
+    },
+    server = {
+      cmd = {
+        'luau-lsp',
+        'lsp',
+        '--definitions=/home/jason/.local/share/nvim/lazy/luau-lsp.nvim/storage/roblox.d.luau',
+        '--definitions=/home/jason/Projects/GameJam/src/types/matter.lua',
+        '--definitions=/home/jason/Projects/GameJam/src/types/init.lua',
+        '--docs=/home/jason/.local/share/nvim/lazy/luau-lsp.nvim/storage/roblox.json',
+      },
+      filetypes = { 'luau', 'lua' },
+      settings = {
+        ['luau-lsp'] = {
+          completion = {
+            enabled = true,
+          },
+          ignoreGlobs = {
+            '**/_Index/**',
+          },
+        },
+      },
+    },
+  })
+else
+  lspconfig.lua_ls.setup({
+    capabilities = capabilities,
+    settings = {
+      Lua = {
+        format = {
+          enable = false,
+        },
+        diagnostics = {
+          enable = true,
+          globals = { 'vim' },
+        },
+        runtime = { version = 'LuaJIT' },
+        workspace = {
+          library = (function()
+            local lib = {}
+            for _, path in ipairs(vim.api.nvim_get_runtime_file('lua', true)) do
+              lib[#lib + 1] = path:sub(1, -5)
+            end
+            return lib
+          end)(),
+          checkThirdParty = false,
+        },
+        telemetry = {
+          enable = false,
+        },
+      },
+    },
+  })
+end
 
 lspconfig.pyright.setup({
   capabilities = capabilities,

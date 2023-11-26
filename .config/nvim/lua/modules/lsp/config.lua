@@ -50,6 +50,7 @@ function config.auto_pairs()
     check_ts = true,
     ts_config = {
       lua = { 'string' },
+      luau = { 'string' },
       javascript = { 'template_string' },
       typescript = { 'template_string' },
       typescriptreact = { 'template_string' },
@@ -111,6 +112,7 @@ function config.mason()
       'json-lsp',
       'eslint-lsp',
       'lua-language-server',
+      'luau_lsp',
       'node-debug2-adapter',
       'prettier',
       'prettierd',
@@ -135,38 +137,6 @@ function config.mason()
     },
     auto_update = true,
   })
-  require('mason-lspconfig').setup_handlers({
-    luau_lsp = function()
-      require('luau-lsp').setup({
-        sourcemap = { enabled = true, autogenerate = true },
-        types = { roblox = true },
-
-        server = { -- options passed to `require("lspconfig").luau_lsp.setup`
-          filetypes = { 'lua', 'luau' }, -- default is { "luau" }
-          settings = {
-            ['luau-lsp'] = {
-              require = {
-                mode = 'relativeToFile',
-              },
-              completion = {
-                autocompleteEnd = true,
-                addParentheses = true,
-                imports = {
-                  enabled = true,
-                  suggestServices = true,
-                  suggestRequires = true,
-                  separateGroupsWithLine = true,
-                },
-              },
-              ignoreGlobs = {
-                '**/_Index/**',
-              },
-            },
-          },
-        },
-      })
-    end,
-  })
 
   require('mason-lspconfig').setup()
 end
@@ -184,10 +154,11 @@ function config.lint()
     markdown = { 'markdownlint' },
     python = { 'flake8' },
     lua = { 'selene' },
+    luau = { 'selene' },
     sql = { 'sqlfluff' },
   }
 
-  vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+  vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged', 'BufRead' }, {
     callback = function()
       require('lint').try_lint()
     end,

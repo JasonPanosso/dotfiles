@@ -26,6 +26,7 @@ function config.telescope()
 
   require('telescope').setup({
     defaults = {
+      file_ignore_patterns = { 'node_modules', '_Index' },
       path_display = { 'smart' },
       mappings = {
         n = {
@@ -75,6 +76,21 @@ function config.nvim_treesitter()
   vim.api.nvim_command('set foldmethod=expr')
   vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
 
+  -- postgresql parser
+  -- local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+  --
+  -- -- this is the recommended way to do it, idk why LuaLS mad
+  -- ---@diagnostic disable: inject-field
+  -- parser_config.postgres = {
+  --   install_info = {
+  --     url = '$HOME/Projects/tree-sitter-sql',
+  --     files = { 'src/parser.c', 'src/scanner.cc' },
+  --     branch = 'main',
+  --     requires_generate_from_grammar = true,
+  --     filetype = "sql',",
+  --   },
+  -- }
+
   require('luau-lsp').treesitter()
 
   -- known LuaLS bug https://github.com/nvim-treesitter/nvim-treesitter/issues/5297
@@ -83,7 +99,7 @@ function config.nvim_treesitter()
     sync_install = true,
     ensure_installed = 'all',
     auto_install = true,
-    ignore_install = { 'phpdoc', 'sql' },
+    ignore_install = { 'phpdoc', 'sql', 'luau' },
     highlight = {
       enable = true,
     },
@@ -104,21 +120,6 @@ function config.nvim_treesitter()
   require('ts_context_commentstring').setup({})
   require('nvim-ts-autotag').setup({})
 
-  -- postgresql parser
-  local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-
-  -- this is the recommended way to do it, idk why LuaLS mad
-  ---@diagnostic disable: inject-field
-  parser_config.postgres = {
-    install_info = {
-      url = '$HOME/Projects/tree-sitter-sql',
-      files = { 'src/parser.c', 'src/scanner.cc' },
-      branch = 'main',
-      requires_generate_from_grammar = true,
-      filetype = "sql',",
-    },
-  }
-
   --set indent for jsx tsx
   vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'javascriptreact', 'typescriptreact' },
@@ -135,6 +136,9 @@ function config.formatter()
   require('formatter').setup({
     filetype = {
       lua = {
+        require('formatter.filetypes.lua').stylua,
+      },
+      luau = {
         require('formatter.filetypes.lua').stylua,
       },
       svelte = {

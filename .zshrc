@@ -7,16 +7,15 @@ export DOTNET_ROOT="/usr/lib/dotnet"
 export TERMINAL="/usr/bin/kitty"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export WINEESYNC=1
 alias python=python3
 alias sioyek="$HOME/.local/bin/Sioyek-x86_64.AppImage"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias rc="regolith-control-center"
 alias i3go="$HOME/.restore-i3.sh"
 alias i3golaptop="$HOME/.restore-i3-laptop.sh"
 alias rez="$HOME/.local/bin/i3-resurrect restore -w"
 alias ra="/usr/bin/ranger"
 alias supa="npx supabase"
-alias pt="psql postgresql://supabase_admin:postgres@localhost:54322/postgres -a -f ../supabase/clear_database.sql > logs/.drop_db.log 2> logs/.drop_db.error.log && psql postgresql://supabase_admin:postgres@localhost:54322/postgres -a -f ../supabase/seed.sql > logs/.seed_db.log 2> logs/.seed_db.error.log && npx playwright test"
 [[ $TMUX != "" ]] && export TERM="screen-256color"
 ZSH_THEME="spaceship"
 
