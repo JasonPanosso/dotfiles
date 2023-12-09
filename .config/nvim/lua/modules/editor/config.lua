@@ -205,10 +205,16 @@ function config.formatter()
         require('formatter.filetypes.html').prettierd,
       },
       sh = {
-        require('formatter.filetypes.sh').shfmt,
+        require('formatter.filetypes.zsh').beautysh,
+      },
+      zsh = {
+        require('formatter.filetypes.zsh').beautysh,
       },
       yaml = {
         require('formatter.filetypes.yaml').prettierd,
+      },
+      toml = {
+        require('formatter.filetypes.toml').taplo,
       },
       ['*'] = {
         require('formatter.filetypes.any').remove_trailing_whitespace,

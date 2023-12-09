@@ -130,10 +130,11 @@ function config.mason()
       'gopls',
       'golangci-lint',
       'golangci-lint-langserver',
-      'shfmt',
+      'beautysh',
       'sqlfluff',
       'dprint',
       'selene',
+      'taplo',
     },
     auto_update = true,
   })
@@ -239,24 +240,14 @@ function config.rust_tools()
       adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
     },
     server = {
-      standalone = true,
+      -- standalone = true,
       capabilities = require('cmp_nvim_lsp').default_capabilities(),
       on_attach = function(_, bufnr)
-        vim.api.nvim_create_autocmd('InsertLeave', {
-          command = 'w',
-          buffer = bufnr,
-          nested = true,
-        })
-        vim.api.nvim_create_autocmd('TextChanged', {
-          command = 'w',
-          buffer = bufnr,
-          nested = true,
-        })
         vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, { buffer = bufnr })
         vim.keymap.set('n', '<Leader>ca', rt.code_action_group.code_action_group, { buffer = bufnr })
       end,
     },
-    autoSetHints = true,
+    -- autoSetHints = true,
   })
 end
 
