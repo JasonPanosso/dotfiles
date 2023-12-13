@@ -151,7 +151,7 @@ lspconfig.cssls.setup({
 
 lspconfig.tailwindcss.setup({
   capabilities = capabilities,
-  filetypes = { 'svelte' },
+  filetypes = { 'svelte', 'typescriptreact', 'javascriptreact' },
 })
 
 lspconfig.eslint.setup({
@@ -168,6 +168,14 @@ lspconfig.gopls.setup({
 })
 
 lspconfig.taplo.setup({
+  capabilities = capabilities,
+})
+
+lspconfig.bashls.setup({
+  capabilities = capabilities,
+})
+
+lspconfig.ansiblels.setup({
   capabilities = capabilities,
 })
 

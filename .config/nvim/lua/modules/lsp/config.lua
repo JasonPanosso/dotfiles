@@ -135,6 +135,8 @@ function config.mason()
       'dprint',
       'selene',
       'taplo',
+      'ansiblels',
+      'ansible-lint',
     },
     auto_update = true,
   })
@@ -157,6 +159,8 @@ function config.lint()
     lua = { 'selene' },
     luau = { 'selene' },
     sql = { 'sqlfluff' },
+    yml = { 'ansible_lint' },
+    yaml = { 'ansible_lint' },
   }
 
   vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged', 'BufRead' }, {
@@ -175,7 +179,7 @@ function config.typescript_tools()
       'typescript',
       'typescriptreact',
       'typescript.tsx',
-      'svelte',
+      -- 'svelte',
       'vue',
       'astro',
     },

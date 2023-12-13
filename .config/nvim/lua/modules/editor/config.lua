@@ -142,7 +142,20 @@ function config.formatter()
         require('formatter.filetypes.lua').stylua,
       },
       svelte = {
-        require('formatter.filetypes.svelte').prettier,
+        function()
+          return {
+            exe = 'prettier',
+            args = {
+              '--stdin-filepath',
+              util.escape_path(util.get_current_buffer_file_path()),
+              '--plugin=prettier-plugin-svelte',
+              -- '--parser',
+              -- 'svelte',
+            },
+            stdin = true,
+            try_node_modules = true,
+          }
+        end,
       },
       typescript = {
         function()
