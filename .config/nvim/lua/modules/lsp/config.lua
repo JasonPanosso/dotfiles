@@ -244,14 +244,14 @@ function config.rust_tools()
       adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
     },
     server = {
-      -- standalone = true,
+      standalone = true,
       capabilities = require('cmp_nvim_lsp').default_capabilities(),
       on_attach = function(_, bufnr)
         vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, { buffer = bufnr })
         vim.keymap.set('n', '<Leader>ca', rt.code_action_group.code_action_group, { buffer = bufnr })
       end,
     },
-    -- autoSetHints = true,
+    autoSetHints = true,
   })
 end
 
