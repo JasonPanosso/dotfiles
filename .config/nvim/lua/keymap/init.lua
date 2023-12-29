@@ -115,7 +115,8 @@ nmap({
   { '<Leader>td', cmd('lua require("neotest").run.run({strategy = "dap"})'), opts('[T]est [D]ebug', noremap) },
   { '<Leader>tw', cmd('lua require("neotest").run.run(vim.fn.getcwd())'), opts('[T]est [W]orkspace', noremap) },
   { '<Leader>tx', cmd('lua require("neotest").run.stop()'), opts('[T]est [X]', noremap) },
-  { '<Leader>to', cmd('lua require("neotest").summary.toggle()'), opts('[T]est [O]pen', noremap) },
+  { '<Leader>ts', cmd('lua require("neotest").summary.toggle()'), opts('[T]est [S]ummary', noremap) },
+  { '<Leader>to', cmd('lua require("neotest").output.open({ enter = true })'), opts('[T]est [O]utput', noremap) },
   { '<Leader>ta', cmd('lua require("neotest").run.attach()'), opts('[T]est [A]ttach', noremap) },
   { '<Leader>tl', cmd('lua require("neotest").run.run_last()'), opts('[T]est [L]ast', noremap) },
 })

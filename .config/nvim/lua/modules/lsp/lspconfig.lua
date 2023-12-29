@@ -179,6 +179,23 @@ lspconfig.ansiblels.setup({
   capabilities = capabilities,
 })
 
+vim.tbl_deep_extend('keep', lspconfig, {
+  postgres_lsp = {
+    default_config = {
+      name = 'postgres_lsp',
+      cmd = { 'postgres_lsp' },
+      filetypes = { 'sql' },
+      single_file_support = true,
+      root_dir = require('lspconfig.util').root_pattern('root-file.txt'),
+    },
+  },
+})
+
+lspconfig.postgres_lsp.setup({
+  capabilities = capabilities,
+  force_setup = true,
+})
+
 vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
   local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
   local bufnr = vim.api.nvim_get_current_buf()

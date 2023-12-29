@@ -26,7 +26,7 @@ function config.telescope()
 
   require('telescope').setup({
     defaults = {
-      file_ignore_patterns = { 'node_modules', '_Index' },
+      file_ignore_patterns = { 'node_modules', '_Index', '.git' },
       path_display = { 'smart' },
       mappings = {
         n = {
@@ -49,6 +49,7 @@ function config.telescope()
       file_previewer = require('telescope.previewers').vim_buffer_cat.new,
       grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
       qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+      hidden = true,
       vimgrep_arguments = {
         'rg',
         '--color=never',
@@ -58,6 +59,7 @@ function config.telescope()
         '--column',
         '--smart-case',
         '--trim',
+        '--hidden',
       },
     },
     extensions = {
