@@ -16,9 +16,9 @@ package({
     'python',
     'svelte',
     'markdown',
-    'rust',
     'sql',
     'go',
+    'rust',
   },
   config = conf.nvim_lsp,
   dependencies = {
@@ -38,7 +38,6 @@ package({
 
 package({
   'williamboman/mason.nvim',
-  build = ':MasonUpdate',
   config = conf.mason,
   dependencies = {
     { 'williamboman/mason-lspconfig.nvim' },
@@ -46,15 +45,6 @@ package({
     { 'lopi-py/luau-lsp.nvim' },
   },
 })
-
--- package({
---   'jose-elias-alvarez/null-ls.nvim',
---   config = conf.null_ls,
---   event = { 'BufRead', 'BufNewFile' },
---   dependencies = {
---     { 'neovim/nvim-lspconfig' },
---   },
--- })
 
 package({
   'glepnir/lspsaga.nvim',
@@ -64,6 +54,11 @@ package({
     { 'nvim-tree/nvim-web-devicons' },
     { 'nvim-treesitter/nvim-treesitter' },
   },
+})
+
+package({
+  'onsails/lspkind.nvim',
+  commit = '57610d5',
 })
 
 package({
@@ -99,11 +94,29 @@ package({
   },
 })
 
+-- package({
+--   'simrat39/rust-tools.nvim',
+--   config = conf.rust_tools,
+--   dependencies = { 'mfussenegger/nvim-dap', 'nvim-lua/plenary.nvim' },
+--   ft = 'rust',
+-- })
+
 package({
-  'simrat39/rust-tools.nvim',
-  config = conf.rust_tools,
-  dependencies = { 'mfussenegger/nvim-dap', 'nvim-lua/plenary.nvim' },
+  'mrcjkb/rustaceanvim',
+  config = conf.rustaceanvim,
+  version = '^3',
   ft = 'rust',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    -- 'mfussenegger/nvim-dap',
+    'lvimuser/lsp-inlayhints.nvim',
+  },
+})
+
+package({
+  'lvimuser/lsp-inlayhints.nvim',
+  config = conf.inlayhints,
+  event = 'LspAttach',
 })
 
 package({

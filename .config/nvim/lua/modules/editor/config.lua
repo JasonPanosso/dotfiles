@@ -231,6 +231,9 @@ function config.formatter()
       toml = {
         require('formatter.filetypes.toml').taplo,
       },
+      cs = {
+        require('formatter.filetypes.cs').csharpier,
+      },
       ['*'] = {
         require('formatter.filetypes.any').remove_trailing_whitespace,
       },

@@ -18,8 +18,13 @@ function config.nvim_cmp()
           luasnip = '[LuaSnip]',
           path = '[Path]',
         },
+        -- maxwidth = 50,
       }),
-      fields = { 'abbr', 'kind', 'menu' },
+      fields = {
+        'abbr',
+        'kind',
+        'menu',
+      },
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-e>'] = cmp.config.disable,
@@ -137,8 +142,11 @@ function config.mason()
       'taplo',
       'ansiblels',
       'ansible-lint',
+      'clangd',
+      'csharp_ls',
+      'csharpier',
     },
-    auto_update = true,
+    auto_update = false,
   })
 
   require('mason-lspconfig').setup()
@@ -233,25 +241,86 @@ function config.typescript_tools()
   })
 end
 
-function config.rust_tools()
-  local rt = require('rust-tools')
-  local mason_path = vim.env.HOME .. '/.local/share/nvim/mason'
-  local extension_path = mason_path .. '/packages/codelldb/extension'
-  local codelldb_path = extension_path .. '/adapter/codelldb'
-  local liblldb_path = extension_path .. '/lldb/lib/liblldb.so'
-  rt.setup({
-    dap = {
-      adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path),
-    },
+function config.rustaceanvim()
+  -- local cfg = require('rustaceanvim.config')
+
+  -- local mason_path = vim.env.HOME .. '/.local/share/nvim/mason'
+  -- local extension_path = mason_path .. '/packages/codelldb/extension'
+  -- local codelldb_path = extension_path .. '/adapter/codelldb'
+  -- local liblldb_path = extension_path .. '/lldb/lib/liblldb.so'
+
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+  vim.g.rustaceanvim = {
+    -- dap = {
+    -- adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+    -- },
     server = {
       standalone = true,
-      capabilities = require('cmp_nvim_lsp').default_capabilities(),
-      on_attach = function(_, bufnr)
-        vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, { buffer = bufnr })
-        vim.keymap.set('n', '<Leader>ca', rt.code_action_group.code_action_group, { buffer = bufnr })
+      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities),
+      checkOnSave = {
+        allFeatures = true,
+        command = 'clippy',
+        extraArgs = { '--no-deps' },
+      },
+      on_attach = function(client, bufnr)
+        require('lsp-inlayhints').on_attach(client, bufnr)
+
+        vim.keymap.set('n', '<Leader>rd', function()
+          vim.cmd.RustLsp('debuggables')
+        end, { buffer = bufnr, silent = true })
+
+        vim.keymap.set('n', '<Leader>ca', function()
+          vim.cmd.RustLsp('codeAction')
+        end, { buffer = bufnr, silent = true })
       end,
+      settings = {
+        -- rust-analyzer language server configuration
+        ['rust-analyzer'] = {
+          cargo = {
+            allFeatures = true,
+            loadOutDirsFromCheck = true,
+            runBuildScripts = true,
+          },
+          -- Add clippy lints for Rust.
+          checkOnSave = {
+            allFeatures = true,
+            command = 'clippy',
+            extraArgs = { '--no-deps' },
+          },
+          procMacro = {
+            enable = true,
+            ignored = {
+              ['async-trait'] = { 'async_trait' },
+              ['napi-derive'] = { 'napi' },
+              ['async-recursion'] = { 'async_recursion' },
+            },
+          },
+        },
+      },
     },
-    autoSetHints = true,
+  }
+end
+
+function config.inlayhints()
+  require('lsp-inlayhints').setup({
+    inlay_hints = {
+      parameter_hints = {
+        show = false,
+      },
+      type_hints = {
+        show = true,
+        prefix = '',
+        separator = ', ',
+        remove_colon_start = false,
+        remove_colon_end = false,
+      },
+      labels_separator = '  ',
+      highlight = 'LspInlayHint',
+      priority = 0,
+    },
+    enabled_at_startup = true,
+    debug_mode = false,
   })
 end
 

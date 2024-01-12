@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local lspUtils = require('modules/lsp/lsputils')
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lsp_border = {
@@ -194,6 +194,14 @@ vim.tbl_deep_extend('keep', lspconfig, {
 lspconfig.postgres_lsp.setup({
   capabilities = capabilities,
   force_setup = true,
+})
+
+lspconfig.clangd.setup({
+  capabilities = capabilities,
+})
+
+lspconfig.csharp_ls.setup({
+  capabilities = capabilities,
 })
 
 vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
