@@ -207,25 +207,6 @@ function config.typescript_tools()
         nested = true,
       })
     end,
-    -- handlers = {
-    --   ['textDocument/publishDiagnostics'] = function(_, result, ctx, conf)
-    --     if result.diagnostics == nil then
-    --       return
-    --     end
-    --
-    --     local idx = 1
-    --     while idx <= #result.diagnostics do
-    --       local entry = result.diagnostics[idx]
-    --
-    --       local formatter = require('modules.lsp.test')[entry.code]
-    --       entry.message = formatter and formatter(entry.message) or entry.message
-    --
-    --       idx = idx + 1
-    --     end
-    --
-    --     vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, conf)
-    --   end,
-    -- },
 
     settings = {
       separate_diagnostic_server = true,
