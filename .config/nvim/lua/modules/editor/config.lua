@@ -231,9 +231,19 @@ function config.formatter()
       toml = {
         require('formatter.filetypes.toml').taplo,
       },
-      cs = {
-        require('formatter.filetypes.cs').csharpier,
-      },
+      cs = function()
+        local cwd = util.get_cwd()
+        local workspace = ''
+        if vim.fn.filereadable(cwd .. '/Assembly-CSharp.csproj') == 1 then
+          workspace = util.escape_path(cwd .. '/Assembly-CSharp.csproj')
+          print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        end
+        return {
+          exe = 'dotnet',
+          args = { 'format', workspace, 'whitespace', '--include' },
+          stdin = false,
+        }
+      end,
       ['*'] = {
         require('formatter.filetypes.any').remove_trailing_whitespace,
       },

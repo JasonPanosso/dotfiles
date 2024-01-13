@@ -143,8 +143,6 @@ function config.mason()
       'ansiblels',
       'ansible-lint',
       'clangd',
-      'csharp_ls',
-      'csharpier',
     },
     auto_update = false,
   })
@@ -191,7 +189,7 @@ function config.typescript_tools()
       'vue',
       'astro',
     },
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
     on_attach = function(client, bufnr)
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
