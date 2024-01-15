@@ -143,6 +143,7 @@ function config.mason()
       'ansiblels',
       'ansible-lint',
       'clangd',
+      'csharpier',
     },
     auto_update = false,
   })

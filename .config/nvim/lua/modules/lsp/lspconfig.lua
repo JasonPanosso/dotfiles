@@ -199,7 +199,6 @@ lspconfig.postgres_lsp.setup({
 lspconfig.clangd.setup({
   capabilities = capabilities,
 })
-
 lspconfig.csharp_ls.setup({
   capabilities = capabilities,
 })

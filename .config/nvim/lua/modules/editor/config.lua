@@ -232,16 +232,10 @@ function config.formatter()
         require('formatter.filetypes.toml').taplo,
       },
       cs = function()
-        local cwd = util.get_cwd()
-        local workspace = ''
-        if vim.fn.filereadable(cwd .. '/Assembly-CSharp.csproj') == 1 then
-          workspace = util.escape_path(cwd .. '/Assembly-CSharp.csproj')
-          print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        end
         return {
-          exe = 'dotnet',
-          args = { 'format', workspace, 'whitespace', '--include' },
-          stdin = false,
+          exe = 'dotnet-csharpier',
+          args = {},
+          stdin = true,
         }
       end,
       ['*'] = {
