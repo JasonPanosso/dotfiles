@@ -144,6 +144,7 @@ function config.mason()
       'ansible-lint',
       'clangd',
       'csharpier',
+      'wgsl_analyzer',
     },
     auto_update = false,
   })
@@ -168,6 +169,7 @@ function config.lint()
     sql = { 'sqlfluff' },
     yml = { 'ansible_lint' },
     yaml = { 'ansible_lint' },
+    htmldjango = { 'djlint' },
   }
 
   vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged', 'BufRead' }, {
@@ -178,6 +180,9 @@ function config.lint()
 end
 
 function config.typescript_tools()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
   require('typescript-tools').setup({
     filetypes = {
       'javascript',
@@ -190,7 +195,7 @@ function config.typescript_tools()
       'vue',
       'astro',
     },
-    capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    capabilities = capabilities,
     on_attach = function(client, bufnr)
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
@@ -229,7 +234,8 @@ function config.rustaceanvim()
   -- local codelldb_path = extension_path .. '/adapter/codelldb'
   -- local liblldb_path = extension_path .. '/lldb/lib/liblldb.so'
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   vim.g.rustaceanvim = {
     -- dap = {
@@ -237,7 +243,7 @@ function config.rustaceanvim()
     -- },
     server = {
       standalone = true,
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities),
+      capabilities = capabilities,
       checkOnSave = {
         allFeatures = true,
         command = 'clippy',
@@ -324,6 +330,28 @@ function config.actions_preview()
           return max_lines - 15
         end,
       },
+    },
+  })
+end
+
+function config.roslyn_lsp()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  capabilities = vim.tbl_deep_extend('force', capabilities, {
+    workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = false,
+      },
+    },
+  })
+
+  require('roslyn').setup({
+    on_attach = function() end,
+    capabilities = capabilities,
+    settings = {
+      suppressDotnetInstallWarning = true,
+      suppressDotnetRestoreNotification = true,
     },
   })
 end

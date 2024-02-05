@@ -35,18 +35,15 @@ function config.harpoon()
   vim.cmd('highlight! HarpoonNumberActive guibg=NONE guifg=#7aa2f7')
   vim.cmd('highlight! HarpoonNumberInactive guibg=NONE guifg=#7aa2f7')
   vim.cmd('highlight! TabLineFill guibg=NONE guifg=white')
+
   require('harpoon').setup({
-    global_settings = {
-      mark_branch = true,
-      tabline = true,
-      tabline_prefix = ' ',
-      tabline_suffix = ' ',
+    settings = {
+      save_on_toggle = true,
+      sync_on_ui_close = true,
     },
-    mark_branch = true,
-    tabline = true,
-    tabline_prefix = ' ',
-    tabline_suffix = ' ',
   })
+
+  require('harpoon-tabline').setup()
 end
 
 function config.neotest()

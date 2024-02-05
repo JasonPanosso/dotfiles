@@ -26,7 +26,9 @@ package({
 package({
   'theprimeagen/harpoon',
   lazy = false,
+  branch = 'harpoon2',
   config = conf.harpoon,
+  dependencies = { 'nvim-lua/plenary.nvim', 'jasonpanosso/harpoon-tabline.nvim' },
 })
 
 package({

@@ -151,7 +151,7 @@ lspconfig.cssls.setup({
 
 lspconfig.tailwindcss.setup({
   capabilities = capabilities,
-  filetypes = { 'svelte', 'typescriptreact', 'javascriptreact' },
+  filetypes = { 'svelte', 'typescriptreact', 'javascriptreact', 'html', 'htmldjango' },
 })
 
 lspconfig.eslint.setup({
@@ -199,7 +199,22 @@ lspconfig.postgres_lsp.setup({
 lspconfig.clangd.setup({
   capabilities = capabilities,
 })
-lspconfig.csharp_ls.setup({
+
+-- lspconfig.csharp_ls.setup({
+--   capabilities = capabilities,
+-- })
+
+-- lspconfig.omnisharp.setup({
+--   cmd = { 'omnisharp' },
+--   capabilities = capabilities,
+-- })
+
+lspconfig.html.setup({
+  capabilities = capabilities,
+  filetypes = { 'html', 'htmldjango' },
+})
+
+lspconfig.wgsl_analyzer.setup({
   capabilities = capabilities,
 })
 

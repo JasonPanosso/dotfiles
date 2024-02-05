@@ -131,3 +131,10 @@ package({
   config = conf.lint,
   dependencies = { 'williamboman/mason.nvim' },
 })
+
+package({
+  'jmederosalvarado/roslyn.nvim',
+  ft = 'cs',
+  config = conf.roslyn_lsp,
+  dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
+})

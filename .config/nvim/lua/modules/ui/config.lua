@@ -135,6 +135,9 @@ function config.lualine()
   end
   lualine.setup({
     options = {
+      refresh = {
+        statusline = 100,
+      },
       globalstatus = true,
       icons_enabled = true,
       theme = 'auto',
@@ -206,6 +209,9 @@ function config.oil()
   require('oil').setup({
     view_options = {
       show_hidden = true,
+      is_always_hidden = function(name, _)
+        return vim.endswith(name, '.meta') -- unity moment
+      end,
     },
     keymaps = {
       ['g?'] = 'actions.show_help',

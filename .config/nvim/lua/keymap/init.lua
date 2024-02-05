@@ -13,6 +13,9 @@ nmap({ ' ', '', opts(noremap) })
 vmap({ ' ', '', opts(noremap) })
 xmap({ ' ', '', opts(noremap) })
 
+-- TEST
+nmap({ '<Leader>sp', cmd('source ~/Projects/harpoon-tabline/lua/init.lua'), opts(noremap) })
+
 -- general binds
 nmap({
   -- move lines
@@ -45,7 +48,6 @@ nmap({
 
   -- page up/down
   { '<C-d>', '<C-d>zz', opts(noremap) },
-  { '<C-f>', '<C-u>zz', opts(noremap) },
   { '<C-u>', '<C-u>zz', opts(noremap) },
 
   -- better next/prev
@@ -222,14 +224,6 @@ nmap({
   -- Diagnostics
   { '<Leader>dl', cmd('Lspsaga show_line_diagnostics'), opts('[D]iagnostics [L]ine', noremap) },
   -- { '<Leader>dl', vim.diagnostic.open_float, opts('[D]iagnostics [L]ine', noremap) },
-  { '<Leader>rt', cmd('lua require("modules.diag"):show_diagnostics({ line = true })'), opts(noremap) },
-  -- {
-  --   '<Leader>rt',
-  --   cmd(
-  --     'lua vim.lsp.util.open_floating_preview({"## `hello`", "```typescript", "Your type `Dinger` type Dinger = Baba Booey","```" }, "markdown")'
-  --   ),
-  --   opts(noremap),
-  -- },
   {
     '<Leader>db',
     cmd('lua require("telescope.builtin").diagnostics({bufnr=0})'),
@@ -299,70 +293,83 @@ nmap({
 -- })
 
 -- harpoon
-local ui = require('harpoon.ui')
+local harpoon = require('harpoon')
 nmap({
-  { '<Leader>a', cmdredraw('lua require("harpoon.mark").add_file()'), opts('Harpoon file', noremap) },
-  { '<Leader>h', cmd('lua require("harpoon.ui").toggle_quick_menu()'), opts('[H]arpoon UI', noremap) },
+  {
+    '<Leader>a',
+    function()
+      harpoon:list():append()
+      vim.cmd('redraw!')
+    end,
+    opts('Harpoon file', noremap),
+  },
+  {
+    '<Leader>h',
+    function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end,
+    opts('[H]arpoon UI', noremap),
+  },
   {
     '<Leader>1',
     function()
-      ui.nav_file(1)
+      harpoon:list():select(1)
     end,
     opts('Harpoon 1', noremap),
   },
   {
     '<Leader>2',
     function()
-      ui.nav_file(2)
+      harpoon:list():select(2)
     end,
     opts('Harpoon 2', noremap),
   },
   {
     '<Leader>3',
     function()
-      ui.nav_file(3)
+      harpoon:list():select(3)
     end,
     opts('Harpoon 3', noremap),
   },
   {
     '<Leader>4',
     function()
-      ui.nav_file(4)
+      harpoon:list():select(4)
     end,
     opts('Harpoon 4', noremap),
   },
   {
     '<Leader>5',
     function()
-      ui.nav_file(5)
+      harpoon:list():select(5)
     end,
     opts('Harpoon 5', noremap),
   },
   {
     '<Leader>6',
     function()
-      ui.nav_file(6)
+      harpoon:list():select(6)
     end,
     opts('Harpoon 6', noremap),
   },
   {
     '<Leader>7',
     function()
-      ui.nav_file(7)
+      harpoon:list():select(7)
     end,
     opts('Harpoon 7', noremap),
   },
   {
     '<Leader>8',
     function()
-      ui.nav_file(8)
+      harpoon:list():select(8)
     end,
     opts('Harpoon 8', noremap),
   },
   {
     '<Leader>9',
     function()
-      ui.nav_file(9)
+      harpoon:list():select(9)
     end,
     opts('Harpoon 9', noremap),
   },

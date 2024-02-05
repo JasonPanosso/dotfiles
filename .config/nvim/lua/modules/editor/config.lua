@@ -26,7 +26,7 @@ function config.telescope()
 
   require('telescope').setup({
     defaults = {
-      file_ignore_patterns = { 'node_modules', '_Index', '.git' },
+      file_ignore_patterns = { 'node_modules', '_Index', '.git', '*.asset', '*.meta' },
       path_display = { 'smart' },
       mappings = {
         n = {
@@ -92,8 +92,6 @@ function config.nvim_treesitter()
   --     filetype = "sql',",
   --   },
   -- }
-
-  require('luau-lsp').treesitter()
 
   -- known LuaLS bug https://github.com/nvim-treesitter/nvim-treesitter/issues/5297
   ---@diagnostic disable: missing-fields
@@ -219,6 +217,13 @@ function config.formatter()
       html = {
         require('formatter.filetypes.html').prettierd,
       },
+      htmldjango = function()
+        return {
+          exe = 'djlint',
+          args = { '--reformat', '-' },
+          stdin = true,
+        }
+      end,
       sh = {
         require('formatter.filetypes.zsh').beautysh,
       },
@@ -231,13 +236,9 @@ function config.formatter()
       toml = {
         require('formatter.filetypes.toml').taplo,
       },
-      cs = function()
-        return {
-          exe = 'dotnet-csharpier',
-          args = {},
-          stdin = true,
-        }
-      end,
+      cs = {
+        require('formatter.filetypes.cs').csharpier,
+      },
       ['*'] = {
         require('formatter.filetypes.any').remove_trailing_whitespace,
       },
