@@ -209,9 +209,9 @@ function config.oil()
   require('oil').setup({
     view_options = {
       show_hidden = true,
-      is_always_hidden = function(name, _)
-        return vim.endswith(name, '.meta') -- unity moment
-      end,
+      -- is_always_hidden = function(name, _)
+      --   return vim.endswith(name, '.meta') -- unity moment
+      -- end,
     },
     keymaps = {
       ['g?'] = 'actions.show_help',

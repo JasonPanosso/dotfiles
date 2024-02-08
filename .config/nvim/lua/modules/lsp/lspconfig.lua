@@ -2,7 +2,7 @@ local lspconfig = require('lspconfig')
 local lspUtils = require('modules/lsp/lsputils')
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lsp_border = {
   { '╭', 'NormalFloat' },

@@ -1,5 +1,5 @@
 local keymap = require('core.keymap')
-local nmap, xmap, vmap = keymap.nmap, keymap.xmap, keymap.vmap
+local nmap, xmap, vmap, imap, smap = keymap.nmap, keymap.xmap, keymap.vmap, keymap.imap, keymap.smap
 local silent, noremap = keymap.silent, keymap.noremap
 local opts = keymap.new_opts
 local cmd = keymap.cmd
@@ -373,4 +373,20 @@ nmap({
     end,
     opts('Harpoon 9', noremap),
   },
+})
+
+-- next snippet
+imap({
+  '<C-L>',
+  function()
+    require('luasnip').jump(1)
+  end,
+  opts('Next snippet', noremap),
+})
+smap({
+  '<C-L>',
+  function()
+    require('luasnip').jump(1)
+  end,
+  opts('Next snippet', noremap, silent),
 })

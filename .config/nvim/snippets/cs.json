@@ -1,0 +1,7 @@
+{
+  "Null check": {
+    "prefix": "ifnull",
+    "body": ["if (${1:MaybeNull} == null)", "{", "\t$0", "}"],
+    "description": "Null check"
+  }
+}

@@ -181,7 +181,7 @@ end
 
 function config.typescript_tools()
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   require('typescript-tools').setup({
     filetypes = {
@@ -235,7 +235,7 @@ function config.rustaceanvim()
   -- local liblldb_path = extension_path .. '/lldb/lib/liblldb.so'
 
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   vim.g.rustaceanvim = {
     -- dap = {
@@ -336,7 +336,7 @@ end
 
 function config.roslyn_lsp()
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   capabilities = vim.tbl_deep_extend('force', capabilities, {
     workspace = {
@@ -349,10 +349,6 @@ function config.roslyn_lsp()
   require('roslyn').setup({
     on_attach = function() end,
     capabilities = capabilities,
-    settings = {
-      suppressDotnetInstallWarning = true,
-      suppressDotnetRestoreNotification = true,
-    },
   })
 end
 
